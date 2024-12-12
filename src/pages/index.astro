@@ -1,12 +1,135 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Layout from "../layouts/Layout.astro";
+import Headline from "../components/Headline.astro";
+import Label from "../components/Label.astro";
+import Article from "../components/Article.astro";
+import ViewButton from "../components/ViewButton.astro";
 const title = "";
 const description = "";
 const og_image = "";
----
+import img2 from '../assets/image 2.png';
+import img3 from '../assets/image 3.png';
+import img4 from '../assets/image 4.png';
+import img5 from '../assets/image 5.png';
+import Award from "../components/Award.astro";
+import Invitation from "../components/Invitation.astro";
+import Status from "../components/Status.astro";
+import Activity from "../components/Activity.astro";
+import Counter from "../components/Test";
+import { signal } from '@preact/signals';
+import Top from "../components/Top.astro";
+import Logo from "../components/Logo.astro";
+import Photo from "../components/Photo.astro";
+const count = signal(0);
 
+---
 <Layout title={title} , description={description} og_image={og_image}>
 	<main>
+		<a class="to_top" href="#top">
+			<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect opacity="0.5" x="3" y="3" width="54" height="54" fill="#74C1F5"/>
+				<path opacity="0.5" d="M7.54606 39.0757C6.48176 40.3903 7.42842 42.3504 9.11976 42.3341L13.5063 42.2918C14.1031 42.2861 14.6662 42.0141 15.0417 41.5501L28.8017 24.5471C29.6021 23.5581 31.1104 23.558 31.9109 24.5469L45.6749 41.5503C46.0504 42.0141 46.6134 42.2861 47.2102 42.2918L51.6309 42.3342C53.3221 42.3505 54.2687 40.3906 53.2046 39.076L31.9315 12.7953C31.1311 11.8065 29.623 11.8064 28.8225 12.7952L7.54606 39.0757Z" fill="#F0F5FD"/>
+				<rect x="0.5" y="0.5" width="59" height="59" stroke="#51B7F2"/>
+			</svg> 
+		</a>
+		<Top>
+		
+		<div class="activity">
+			<div class="logo right">
+				<Logo/>
+			</div>
+			<div class="logo left">
+				<Logo/>
+			</div>
+			<Label jp="普段の活動" en="Activity"/>
+			<Article title="タイトル" date="YYYY/MM/DD" imgSrcs={[img2, img3, img4, img5]} content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" />
+			<Article title="タイトル" date="YYYY/MM/DD" imgSrcs={[img2, img3, img4]} content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・"/>
+			<div class="button_margin">
+				<ViewButton link="/Activities"/>
+			</div>
+		</div>
 
+		<section id="award" class="p-award">
+			<div class="logo p-award__right">
+				<Logo/>
+			</div>
+			<div class="logo p-award__left">
+				<Logo/>
+			</div>
+			<Label jp="大会実績" en="Awards"/>
+			<div class="p-award__container">
+				<Award title="全国大会 ＜ 総合１位 ＞" date="YYYY/DD/MM" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" color="#EEEC9B"/>
+				<Award title="全国大会 ＜ 総合２位 ＞" date="YYYY/DD/MM" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" color="#B4CFD1"/>
+				<Award title="全国大会 ＜ 総合３位 ＞" date="YYYY/DD/MM" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" color="#D1CAB4"/>
+			</div>
+			<div class="button_margin">
+				<ViewButton link="/awards"/>
+			</div>
+		</section>
+		<Headline title="Invitation"/>
+		<section id="invitation" class="p-invitation">
+			<div class="logo p-invitation__right">
+				<Logo/>
+			</div>
+			<div class="logo p-invitation__left">
+				<Logo/>
+			</div>
+			<Invitation title="代々木公園新歓BBQ開催！！！" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" date="YYYY/MM/DD"/>
+			<Invitation title="代々木公園新歓BBQ開催！！！" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" date="YYYY/MM/DD"/>
+			<Invitation title="代々木公園新歓BBQ開催！！！" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" date="YYYY/MM/DD"/>
+		</section>
+		<Photo/>
+		<div class="l-container">
+			<iframe class="justify-center flex items-center" src="https://calendar.google.com/calendar/embed?src=gu.kanyukai.since1953%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="496" frameborder="0" scrolling="no"></iframe>
+		</div>
+		<Headline title="Information"/>
+		<div class="informations">
+			<Status/>
+			<Activity/>
+			<div class="button_margin">
+				<ViewButton link="/Information"/>
+			</div>
+		</div>
+		<Headline title="History"/>
+		<div class="history">
+			<Counter count={count} client:only="preact"/>
+			<div class="button_margin">
+				<ViewButton/>
+			</div>
+		</div>
 	</main>
 </Layout>
+
+<script>
+	const footerHeight = document.getElementById('footer')!.offsetHeight;
+	const toTop = document.querySelectorAll('a.to_top')[0] as HTMLElement;
+	let pos = document.documentElement.scrollHeight - window.scrollY;
+
+	if(pos > window.innerHeight+footerHeight) {
+		toTop.style.bottom = "0px";
+		toTop.classList.remove("locked");
+	} else {
+		if(pos > window.innerHeight){
+			toTop.style.bottom = `${pos-window.innerHeight}px`;
+		}else {
+			toTop.style.bottom = `${footerHeight}px`;
+			toTop.classList.add("locked");
+		}
+		
+	}
+
+	document.addEventListener("scroll", () => {
+    	pos = document.documentElement.scrollHeight - window.scrollY;
+		if(pos > window.innerHeight+footerHeight) {
+			toTop.style.bottom = "0px";
+			toTop.classList.remove("locked");
+		} else {
+			if(pos > window.innerHeight) {
+				toTop.style.bottom = `${footerHeight - (pos-window.innerHeight)}px`;
+			}else{
+				toTop.style.bottom = `${footerHeight}px`;
+				toTop.classList.add("locked");
+			}
+		}
+	});
+</script>

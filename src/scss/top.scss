@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+@use "./variables" as *;
+
+/* ------------------- Topここから ------------------- */
+.p-top {
+  padding: 2% 0 12% 8%;
+  position: relative;
+  justify-content: space-between;
+  &__md__fish {
+    display: none;
+    @media (max-width: $breakpoint-md) {
+      display: block;
+      position: absolute;
+      bottom: 25%;
+      left: 0;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 10% 0 20% 2%;
+    .fish {
+      display: none;
+    }
+    .fish_big {
+      display: none;
+    }
+  }
+  .fish {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 10;
+  }
+
+  .fish_big {
+    position: absolute;
+    bottom: 7%;
+    right: 0;
+    z-index: 10;
+  }
+  &__left__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5% 0;
+    @media (max-width: $breakpoint-lg) {
+      padding: 8% 3%;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      padding: 8% 3%;
+      &__join__link {
+        margin-top: 100px;
+        a {
+          font-size: 1rem;
+        }
+        svg {
+          display: none;
+        }
+      }
+    }
+
+    &__join__link {
+      border: 1px solid #353535;
+      position: relative;
+      width: fit-content;
+      cursor: pointer;
+      padding: 2% 5%;
+      margin-top: 5%;
+      &__content {
+        display: flex;
+        padding-bottom: 3px;
+        padding-right: 3px;
+        svg {
+          margin-left: 6px;
+          align-self: flex-end;
+        }
+      }
+    }
+
+    &__join__link::before {
+      position: absolute;
+      background-color: $strongBlue;
+      inset: 3px -3px -3px 3px;
+      content: "";
+      z-index: -1;
+    }
+
+    &__join__link:hover::before {
+      transition: all 0.4s ease;
+      background-color: rgba($strongBlue, 0.8);
+      inset: 0;
+    }
+  }
+
+  &__right__content {
+    display: inline-block;
+    position: relative;
+    height: auto;
+    margin-left: 0;
+    width: $slideWidth;
+    margin-right: 6px;
+    
+    @media (max-width: $breakpoint-md) {
+      width: 65%;
+    }
+  }
+
+  &__right__content::before {
+    border: 1px solid #000;
+    inset: -4px 4px 4px -4px;
+    position: absolute;
+    content: "";
+    z-index: 2;
+  }
+}
+
+/* ------------------- Topここまで ------------------- */

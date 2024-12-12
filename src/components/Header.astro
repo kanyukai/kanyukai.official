@@ -1,7 +1,89 @@
 ---
-
+import { Image } from 'astro:assets';
+import headerLogo from '../assets/logo.png';
 ---
 
-<header>
-
+<header id="header">
+    <a href="/">
+        <Image src={headerLogo} alt="header__logo" >
+    </a>
+    <div class="header__link__hamburger">
+        <span class="header__link__hamburger__line line__1">
+            
+        </span>
+        <span class="header__link__hamburger__line line__2">
+            
+        </span>
+        <span class="header__link__hamburger__line line__3">
+            
+        </span>
+    </div>
+    <div class="header__link__background">
+        <ul class="header__link__background__ul">
+            <li>
+                <a href="/Activities">大会実績</a>
+            </li>
+            <li>
+                <a href="/Information">サークル情報</a>
+            </li>
+            <li>
+                <a href="/History">歴史</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="header__link">
+        <li>
+            <a class="cursor-pointer" href="/Activities">大会実績</a>
+        </li>
+        <li>
+            <a class="cursor-pointer" href="/Information">サークル情報</a>
+        </li>
+        <li>
+            <a class="cursor-pointer" href="/History">歴史</a>
+        </li>
+        <li class="header__invitation">
+            <a class="helvetica_light">Join us!</a>
+        </li>
+    </ul>
 </header>
+
+<script>
+    const hamburger = document.getElementsByClassName('header__link__hamburger')[0] as HTMLElement;
+    const line1 = document.getElementsByClassName('line__1')[0] as HTMLElement;
+    const line2 = document.getElementsByClassName('line__2')[0] as HTMLElement;
+    const line3 = document.getElementsByClassName('line__3')[0] as HTMLElement;
+    const hamburgerBg = document.getElementsByClassName('header__link__background')[0] as HTMLElement;
+    const hamburgerBgList = document.getElementsByClassName('header__link__background__ul')[0] as HTMLElement;
+    const body = document.querySelectorAll('body');
+    var isHamburgerOpen = false;
+
+    hamburger.addEventListener('click', ()=> {
+        if(isHamburgerOpen){
+            line1.style.rotate = '0deg'
+            line2.style.display = 'block';
+            line3.style.rotate = '0deg';
+            line1.style.margin = '6px'
+            line2.style.margin = '6px'
+            line3.style.margin = '6px';
+            hamburgerBgList.style.display= 'none';
+            hamburgerBg.style.width= '0%';
+            hamburgerBg.style.height= '0%';
+            body.forEach(item => item.style.overflow = 'auto');
+            isHamburgerOpen = false;
+        }else {
+            line1.style.rotate = '45deg';
+            line2.style.display = 'none';
+            line3.style.rotate = '-45deg';
+            line1.style.margin = '0px'
+            line2.style.margin = '0px'
+            line3.style.margin = '0px';
+            line1.style.marginBottom = '-3px'
+            line3.style.marginTop = '-3px';
+            hamburgerBgList.style.display= 'block';
+            hamburgerBg.style.width= '100%';
+            hamburgerBg.style.height= '100%';
+            body.forEach(item => item.style.overflow = 'hidden');
+            isHamburgerOpen = true;
+        }
+    })
+</script>

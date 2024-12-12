@@ -1,3 +1,1119 @@
 @charset "UTF-8";
 
 @use "./variables" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.l-container {
+  max-width: $slideWidth;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+li {
+  list-style: none;
+}
+
+body * {
+  font-size: 16px;
+}
+
+.l-container {
+  padding: 0 8%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 6rem;
+  @media (max-width: $breakpoint-xl) {
+    font-size: 4.5rem;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 1.5rem;
+  }
+}
+
+.flex_all_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.zenkaku_light {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: lighter;
+}
+
+.zenkaku_normal {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: normal;
+}
+
+.helvetica_light {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.bgBlue {
+  background-color: $bgBlue;
+}
+
+.logo_top {
+  display: flex;
+}
+
+.logo {
+  z-index: 50;
+  position: absolute;
+  @media (max-width: $breakpoint-md){
+    display: none;
+  }
+}
+
+/* headerここから*/
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 7%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  .header__link {
+    overflow: hidden;
+    display: flex;
+    &__hamburger {
+      display: none;
+      
+    }
+    
+    li {
+      margin: 0 20px;
+      font-style: "Zen Kaku Gothic New";
+      font-size: 1.25rem;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    a:hover {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      color: rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    &__background {
+      position: absolute;
+      background-color: $bgBlue;
+      width: 0%;
+      height: 0%;
+      top: 0;
+      right: 0;
+      transition: all 0.3s ease;
+      z-index: 100;
+      &__ul {
+        display: none;
+        text-align: center;
+        margin-top: 120px;
+        li {
+          margin: 3% 0;
+        }
+      }
+    }
+
+    .header__invitation {
+      border: 1px solid #000;
+      position: relative;
+      width: 140px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0;
+    }
+
+    .header__invitation::before {
+      position: absolute;
+      background-color: $strongBlue;
+      content: "";
+      inset: 2px -2px -2px 2px;
+      z-index: -1;
+    }
+
+    .header__invitation:hover::before {
+      opacity: 0.8;
+      inset: 0;
+      transition: all 0.3s ease;
+    }
+
+    .header__invitation:hover {
+      inset: 0;
+      transition: all 0.3s ease;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    .header__link {
+      display: none;
+    }
+    .header__link__hamburger {
+      display: inline-block;
+      cursor: pointer;
+      z-index: 101;
+      &__line {
+        display: block;
+        width: 40px;
+        height: 3px;
+        background-color: #000;
+        margin: 6px 0;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+/* headerここまで */
+
+.headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__title {
+    margin: 0 5%;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 4rem;
+    @media (max-width: $breakpoint-md){
+      font-size: 1.5rem;
+    }
+  }
+
+  .line {
+    width: 50%;
+    height: 1px;
+    background-color: black;
+  }
+}
+
+.label {
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: 5%;
+  }
+  .label_top {
+    font-size: 1.25rem;
+    @media (max-width: $breakpoint-md){
+      font-size: 1rem;
+    }
+  }
+
+  .label_bottom {
+    display: flex;
+
+    .en {
+      font-size: 3rem;
+      letter-spacing: 8px;
+      border-bottom: 1px solid #000;
+      @media (max-width: $breakpoint-md) {
+        font-size: 1.5rem;
+        letter-spacing: 4px;
+      }
+    }
+
+    .dots {
+      display: flex;
+      align-self: flex-end;
+      margin-left: 10px;
+      .dot {
+        width: 3px;
+        height: 3px;
+        background-color: #000;
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+.activity {
+  padding: 0 8%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .right {
+    top: 8%;
+    right: 0;
+  }
+
+  .left {
+    bottom: 6%;
+    left: 0;
+  }
+}
+
+.button_margin {
+  margin-top: 3.5%;
+  display: flex;
+  align-self: center;
+}
+
+#article {
+  position: relative;
+  margin-top: 2%;
+
+  .p-article__content {
+    display: flex;
+    background-color: $bgBlue;
+    position: relative;
+    width: inherit;
+    height: inherit;
+    padding: 3%;
+
+    &__left {
+      width: 70%;
+      margin-right: 5%;
+      @media (max-width: $breakpoint-md){
+        width: 50%;
+      }
+      &__top {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #000;
+        align-self: flex-end;
+        &__title {
+          font-size: 2rem;
+          font-family: "Noto Sans JP", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: 400;
+          font-style: normal;
+          align-self: flex-end;
+          @media (max-width: $breakpoint-md){
+            font-size: 1rem;
+          }
+        }
+
+        &__date {
+          font-family: "Noto Sans JP", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: 200;
+          font-style: normal;
+          align-self: flex-end;
+        }
+      }
+
+      &__content {
+        @media (max-width: $breakpoint-md){
+          height: 7.5em;
+          line-height: 1.5em;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 5; /* 表示する行数を指定 */
+          -webkit-box-orient: vertical;
+
+        }
+      }
+    }
+
+    &__right {
+      width: 30%;
+      height: max-content;
+      border: 1px solid #000;
+      position: relative;
+      @media (max-width: $breakpoint-md){
+        width: 50%;
+        .indicator li {
+          width: 10px;
+          height: 10px;
+        }
+  
+      }
+
+      .prev {
+        top: 50% !important;
+        left: -2%;
+      }
+
+      .next {
+        top: 50%;
+        left:initial;
+        right: -2%;
+      }
+    }
+  }
+}
+
+#article::before {
+  position: absolute;
+  border: 1px solid #000;
+  inset: -6px 6px 6px -6px;
+  content: "";
+  z-index: 2;
+}
+
+.p-button {
+  width: 141px;
+  height: 54px;
+  border: 1px solid #000;
+  position: relative;
+  cursor: pointer;
+  @media (max-width:$breakpoint-md){
+    width: 120px;
+    &__content {
+      padding: 0;
+    }
+    a {
+      font-size: 1rem;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    height: 100%;
+
+    a {
+      height: 75%;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    svg {
+      height: 25%;
+      display: flex;
+      justify-content: end;
+      align-self: flex-end;
+      align-items: end;
+      margin-right: 0;
+    }
+  }
+}
+
+.p-button::before {
+  position: absolute;
+  background-color: $strongBlue;
+  inset: 2px -2px -2px 2px;
+  content: "";
+  z-index: -1;
+}
+
+.p-button:hover::before {
+  inset: 0;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.p-award {
+  padding: 0 8%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &__container {
+    margin-top: 20px;
+  }
+
+  &__right {
+    top: 9%;
+    right: 0;
+  }
+
+  &__left {
+    bottom: 4%;
+    left: 0;
+  }
+}
+
+.award__element {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: 1px solid #000;
+  margin-bottom: 7px;
+
+  &__content {
+    padding: 20px 3%;
+    display: flex;
+    width: 100%;
+
+    &__left__rectangle {
+      width: 9px;
+      height: 100%;
+      margin-right: 3%;
+      @media (max-width: $breakpoint-md){
+        width: 7px;
+        height: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        margin: 0 4%;
+      }
+    }
+
+    &__right {
+      width: 100%;
+     
+      &__top {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #000;
+        width: 100%;
+        &__title {
+          font-size: 1.5rem;
+          font-family: "Zen Kaku Gothic New", serif;
+          font-weight: 400;
+          font-style: normal;
+          align-self: flex-end;
+          @media (max-width: $breakpoint-md){
+            font-size: 1.125rem;
+          }
+        }
+
+        &__date {
+          font-family: "Zen Kaku Gothic New", serif;
+          font-weight: 300;
+          font-style: normal;
+          align-self: flex-end;
+        }
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      font-family: "Zen Kaku Gothic New", serif;
+      font-weight: 300;
+      font-style: normal;
+      @media (max-width: $breakpoint-md){
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__content::before {
+    content: "";
+    position: absolute;
+    inset: 7px -7px -7px 7px;
+    background-color: $bgBlue;
+    z-index: -1;
+  }
+}
+
+.p-invitation {
+  padding: 5% 8% 0 8%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  &__right {
+    top: 2%;
+    right: 0;
+  }
+
+  &__left {
+    bottom: -2%;
+    left: 0;
+  }
+
+  &__element {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    &__content {
+      display: flex;
+      padding: 2%;
+      width: inherit;
+      @media (max-width: $breakpoint-md){
+        display: block;
+      }
+      &__left {
+        &__date {
+          font-size: 1.25rem;
+          @media (max-width: $breakpoint-md){
+            font-size: 1rem;
+          }
+        }
+      }
+  
+      &__right {
+        width: 100%;
+        padding: 0 5%;
+        @media (max-width: $breakpoint-md){
+          padding: 0;
+        }
+        &__top {
+          &__title {
+            font-size: 1.5rem;
+            font-family: "Noto Sans JP", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            @media (max-width:$breakpoint-md){
+              font-size: 1.125rem;
+              padding: 8px 0;
+            }
+          }
+        }
+  
+        &__middle {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin-top: 12px;
+          p {
+            @media (max-width: $breakpoint-md){
+              padding: 0;
+            }
+            font-size: 1.25rem;
+            font-family: "Zen Kaku Gothic New", serif;
+            font-weight: 300;
+            font-style: normal;
+            @media (max-width:$breakpoint-md){
+              font-size: 1rem;
+            }
+          }
+  
+          svg {
+            align-self: flex-end;
+  
+          }
+        }
+      }
+    }
+  }
+
+  &__element::before {
+    position: absolute;
+    inset: 5% 0 20% 0%;
+    content: "";
+    background-color: $bgBlue;
+    filter: blur(1.5rem);
+    z-index: -1;
+  }
+}
+
+
+.slidewrapper {
+  width: 75vw;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+}
+
+.p-photo {
+  align-items: center;
+  position: relative;
+  margin: 3% 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scrollbar-width: none;
+  margin: 5% 0;
+  @media (max-width: $breakpoint-md){
+    display: none;
+  }
+
+  &__img__box {
+    flex-shrink: 0;
+    width: $photoCardWidth;
+    height: $photoCardHeight;
+    margin: 0 1%;
+    border: 1px solid #000;
+  }
+
+  .odd {
+    margin-top: 5%;
+    box-shadow: 0 50px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .even {
+    margin-bottom: 5%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.status_elem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .top {
+    display: flex;
+    .tag_bg {
+      background-color: #c5c5c5;
+      width: 4px;
+      height: 40px;
+    }
+    .title {
+      font-size: 1.5rem;
+      font-family: "Zen Kaku Gothic New", serif;
+      font-weight: 300;
+      font-style: normal;
+      display: flex;
+      align-items: center;
+      margin-left: 4px;
+    }
+  }
+
+  .bottom {
+    align-self: center;
+    font-size: 1.5rem;
+    font-family: "Zen Kaku Gothic New", serif;
+    font-weight: 300;
+    font-style: normal;
+    margin: 0 4px;
+  }
+}
+
+.informations {
+  padding: 0 8%;
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 5%;
+  .left {
+    width: 50%;
+    .content {
+      margin-top: 20px;
+      margin-left: 5%;
+    }
+    p {
+      font-size: 1.25rem;
+    }
+    .link {
+      margin-top: 4%;
+      display: flex;
+      p {
+        font-size: 1.25rem;
+        font-family: "Zen Kaku Gothic New", serif;
+        font-weight: 300;
+        font-style: normal;
+      }
+      a {
+        font-size: 1.25rem;
+        margin: 0 12px;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: end;
+    width: 560px;
+    height: 420px;
+    position: relative;
+    border: 1px solid rgba(#000, 0.3);
+    .content {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 560px;
+      height: 420px;
+      z-index: -1;
+    }
+
+    .bg {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+
+    .one {
+      top: -5%;
+      left: 20%;
+    }
+
+    .two {
+      bottom: 30%;
+      left: -8%;
+    }
+
+    .three {
+      top: 20%;
+      right: 30%;
+    }
+  }
+}
+
+.activity_mini {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10%;
+
+  .left {
+    width: 35%;
+    .content {
+      width: 100%;
+      font-family: "Zen Kaku Gothic New", serif;
+      font-weight: 300;
+      font-style: normal;
+      padding-top: 5%;
+      .title {
+        font-size: 2.25rem;
+        font-family: "Zen Kaku Gothic New", serif;
+        font-weight: 300;
+        font-style: normal;
+        border-bottom: 1px solid #000;
+        margin-bottom: 4%;
+        width: fit-content;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .right {
+    margin-top: 12%;
+    width: 560px;
+    height: 420px;
+    position: relative;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+    .img_container {
+      z-index: -1;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 560px;
+      height: 420px;
+    }
+    .bg {
+      position: absolute;
+    }
+    .one {
+      top: -20%;
+      left: -20%;
+    }
+    .two {
+      bottom: -7%;
+      left: 10%;
+    }
+
+    .three {
+      top: -5%;
+      right: -10%;
+    }
+  }
+}
+
+footer {
+  box-shadow: 0 -10px 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+
+  .content {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.25rem;
+    padding: 27px 0;
+  }
+}
+
+.to_top {
+  position: fixed;
+  bottom: 0;
+  z-index: 70;
+  right: 60px;
+}
+
+.to_top.locked {
+  position: fixed;
+  bottom: 102px;
+  z-index: 70;
+  right: 60px;
+}
+
+.slip {
+  z-index: -2;
+  border: 0.5px solid rgba($color: #000000, $alpha: 0.3);
+  position: relative;
+}
+
+.test-wrapper {
+  align-items: center;
+  position: relative;
+  margin: 3% 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  height: 600px;
+  box-sizing: border-box;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  scrollbar-width: none;
+  .border {
+    position: absolute;
+    border: 1px solid #b0dfe7;
+    z-index: -2;
+    top: 400px;
+    width: 2400px;
+    height: 2px;
+  }
+}
+
+.period_wrapper {
+  transform: rotate(-45deg);
+  border-bottom: 2px solid #b0dfe7;
+  flex-shrink: 0;
+  position: relative;
+  width: 204px;
+  height: 110px;
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 150px;
+  align-self: center;
+  cursor: pointer;
+
+  .left_circle {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #b0dfe7;
+    bottom: -16px;
+    left: -2px;
+  }
+  .right_circle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #b0dfe7;
+    bottom: -8px;
+    right: -8px;
+  }
+
+  .date {
+    position: relative;
+    bottom: -28px;
+    left: 16px;
+    text-align: center;
+    font-size: 64px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 6px;
+  }
+
+  .title {
+    position: absolute;
+    bottom: -32px;
+    left: 42px;
+    font-size: 20px;
+    font-family: "Zen Kaku Gothic New", serif;
+    font-weight: 300;
+    font-style: normal;
+    white-space: nowrap;
+  }
+}
+
+.detail_container {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 750px !important;
+  height: 500px;
+  border: 1px solid #000;
+  position: relative;
+  padding: 3%;
+  margin-left: 20%;
+
+  .year {
+    font-size: 4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 8px;
+    font-weight: bold;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-family: "Zen Kaku Gothic New", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  p {
+    margin-top: 3%;
+    font-size: 1.25rem;
+    font-family: "Zen Kaku Gothic New", serif;
+    font-weight: 300;
+    font-style: normal;
+    white-space: pre-wrap;
+  }
+
+  .bg {
+    width: 750px;
+    height: 500px;
+    position: absolute;
+    z-index: -1;
+    top: 8px;
+    left: 8px;
+    background-color: #e6fbff;
+  }
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.slide-wrapper {
+  width: 100%;
+  height: $slideHeight;
+  position: relative;
+  overflow: hidden;
+  .slide1 {
+    transform: translateX(0);
+    border: none;
+  }
+  .slide2 {
+    transform: translateX(-20%);
+  }
+  .slide3 {
+    transform: translateX(-40%);
+  }
+  .slide4 {
+    transform: translateX(-60%);
+  }
+  .slide5 {
+    transform: translateX(-80%);
+  }
+  .slide div:nth-of-type(1) {
+    background-color: #e1f3fc;
+  }
+  .slide div:nth-of-type(2) {
+    background-color: #fce8f0;
+  }
+  .slide div:nth-of-type(3) {
+    background-color: #e3f1e4;
+  }
+
+  .list {
+    background-color: white;
+  }
+
+  .slide_indicators {
+    position: absolute;
+    flex-shrink: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .selected {
+    position: static;
+  }
+
+  .navigations {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: fit-content;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    z-index: 100;
+    margin-left: 1%;
+    span {
+      margin: 0 4%;
+    }
+  }
+
+  .navigation-inf {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: fit-content;
+    top: 0px;
+    left: 80%;
+    box-sizing: border-box;
+    z-index: 100;
+    margin-left: 1%;
+    span {
+      margin: 2% 4%;
+      text-align: right;
+    }
+  }
+
+  .next {
+    margin-left: 40px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+  .prev {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+
+  #progress {
+    transition: width 0.03s linear;
+  }
+
+  .slide {
+    width: 500%;
+    height: 100%;
+    display: flex;
+    transition: all 0.3s;
+  }
+  .slide div {
+    width: 20%;
+    height: 100%;
+    font-size: 16px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    z-index: -2;
+  }
+
+#progress {
+  transition: width 0.03s linear;
+}
+
+.awards_main {
+  margin: 0 8%;
+}
+
+@media (max-width: 768px) {
+  a {
+    font-size: 1rem;
+  }
+
+  .top_content {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}

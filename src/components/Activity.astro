@@ -1,0 +1,36 @@
+---
+import Label from "./Label.astro";
+
+const paragraph = '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・';
+import img5 from '../assets/image 5.png';
+import { Image } from "astro:assets";
+import SlipCard from "./SlipCard.astro";
+const alt = "...";
+---
+
+<div class="activity_mini">
+    <div class="left">
+        <Label jp="年間行事" en="Events"/>
+        <div class="content">
+            <div class="title">月例釣行</div>
+            <p>{paragraph}</p>
+        </div>
+        
+    </div>
+
+    
+    <div class="right">
+        <div class="img_container">
+            <Image src={img5} alt={alt}/>
+        </div>
+        <div class="bg one">
+            <SlipCard width="250px" height="220px"/>
+        </div>
+        <div class="bg two">
+            <SlipCard width="300px" height="220px"/>
+        </div>
+        <div class="bg three">
+            <SlipCard width="300px" height="220px"/>
+        </div>
+    </div>
+</div>

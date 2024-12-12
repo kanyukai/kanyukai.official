@@ -1,0 +1,213 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Image } from "astro:assets";
+
+import '@/scss/info.scss';
+
+import '@fontsource/zen-kaku-gothic-new';
+
+
+const title = "";
+const description = "";
+const og_image = "";
+
+import Slide from "@/components/Slide.astro";
+import Fishbg from "@/assets/images/fish_bg.webp";
+import dummy1 from "@/assets/images/dummy1.webp";
+import Top from "@/components/Top.astro";
+---
+
+<Layout title={title} , description={description} og_image={og_image}>
+  <main>
+    <a class="to_top" href="#top">
+			<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect opacity="0.5" x="3" y="3" width="54" height="54" fill="#74C1F5"/>
+				<path opacity="0.5" d="M7.54606 39.0757C6.48176 40.3903 7.42842 42.3504 9.11976 42.3341L13.5063 42.2918C14.1031 42.2861 14.6662 42.0141 15.0417 41.5501L28.8017 24.5471C29.6021 23.5581 31.1104 23.558 31.9109 24.5469L45.6749 41.5503C46.0504 42.0141 46.6134 42.2861 47.2102 42.2918L51.6309 42.3342C53.3221 42.3505 54.2687 40.3906 53.2046 39.076L31.9315 12.7953C31.1311 11.8065 29.623 11.8064 28.8225 12.7952L7.54606 39.0757Z" fill="#F0F5FD"/>
+				<rect x="0.5" y="0.5" width="59" height="59" stroke="#51B7F2"/>
+			</svg> 
+		</a>
+		
+
+    <section id="Info-top" class="p-Info-top">
+      <a class="to_top" href="#top">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect opacity="0.5" x="3" y="3" width="54" height="54" fill="#74C1F5"/>
+          <path opacity="0.5" d="M7.54606 39.0757C6.48176 40.3903 7.42842 42.3504 9.11976 42.3341L13.5063 42.2918C14.1031 42.2861 14.6662 42.0141 15.0417 41.5501L28.8017 24.5471C29.6021 23.5581 31.1104 23.558 31.9109 24.5469L45.6749 41.5503C46.0504 42.0141 46.6134 42.2861 47.2102 42.2918L51.6309 42.3342C53.3221 42.3505 54.2687 40.3906 53.2046 39.076L31.9315 12.7953C31.1311 11.8065 29.623 11.8064 28.8225 12.7952L7.54606 39.0757Z" fill="#F0F5FD"/>
+          <rect x="0.5" y="0.5" width="59" height="59" stroke="#51B7F2"/>
+        </svg> 
+      </a>
+      
+            <h1 class="p-Info-top__ttl">Information</h1>
+            <Image
+              src={Fishbg}
+                    alt={""}
+              class="p-activities__fish-bg"
+            />
+            <div class="slidewrapper">
+              <Slide>
+            </div>
+    </section>
+    <section id="Status" class="p-Status">
+        <div class="l-container">
+          <div class="p-Status__flexbox">
+            <div class="p-Status__titlewrapper">
+              <p>基本情報</p>
+              <div class="p-Status__titlewrapper__flexbox">
+                <h1 class="p-Status__titlewrapper__flexbox__title">Status</h1>
+                <pre class="p-Status__titlewrapper__flexbox__margin">　　　</pre>
+              </div>
+            </div>
+            <div class="p-Status__img-wrapper">
+              <Image
+                src={Fishbg}
+                      alt={""}
+              />
+              <Image
+                src={Fishbg}
+                      alt={""}
+              />
+            </div>
+          </div>
+          
+          <div class="p-activities__contentswrapper">
+            <div class="p-activities__contentswrapper__leftcontents">
+              <div class="p-activities__contentswrapper__leftcontents__wrapper">
+                <h2 class="contentstitle">正式名称</h2>
+                <p>学習院大学　輔仁会竿友会同好会</p>
+              </div>
+              <div class="p-activities__contentswrapper__leftcontents__wrapper">
+                <h2 class="contentstitle">活動場所</h2>
+                <p>そこらへんの河原</p>
+              </div>
+              <div class="p-activities__contentswrapper__leftcontents__wrapper">
+                <h2 class="contentstitle">活動日</h2>
+                <p>毎週土日・祝日</p>
+              </div>
+              <div class="p-activities__contentswrapper__leftcontents__wrapper">
+                <h2 class="contentstitle">所属人数</h2>
+                <p>500人(男女比5:5)</p>
+              </div>
+            </div>
+            <div class="p-activities__contentswrapper__rightcontents">
+              <h2 class="contentstitle">活動内容</h2>
+              <p>竿友会同好会では１年間を通して脱初心者を目指す「月例釣
+                行」を月に一度行っております。
+                そのほかにも中級者、上級者は「ステップアップ釣行」とし
+                て有志釣行を2，3，4年が企画し、その都度釣行を行っていま
+                す。
+                また、竿友会は全日本学生釣魚連盟　関東支部（学釣連）に
+                所属しておりメーカー主催の講習会や大会、学釣連主催のイ
+                ベントや大会に参加しています。
+                そのほかにも体育会系に所属しているため、大学主催のイベ
+                ントや大学祭への出店など大学生活をより楽しむことが出来
+                る事が最大の魅力です。
+              </p>
+            </div>
+          </div>
+
+        </div>
+    </section>
+    <section id="Events" class="p-Events">
+        <div class="l-container">
+          <div class="p-Events__titlewrapper">
+            <p>年中行事</p>
+            <div class="p-Events__titlewrapper__flexbox">
+              <h1 class="p-Events__titlewrapper__flexbox__title">Events</h1>
+              <pre class="p-Events__titlewrapper__flexbox__margin">　　　</pre>
+            </div>
+          </div>
+
+          <div class="p-Events__cardswrapper">
+            <div class="p-Events__cardswrapper__card">
+              <div class="p-Events__cardswrapper__card__flexbox">
+                <Image 
+                src={dummy1} 
+                alt=""
+                class="slide1"
+                />
+                <div class="p-Events__cardswrapper__card__flexbox__txtbox">
+                  <h3>月例釣行</h3>
+                  <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                     容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                     内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                     容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                     内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                     容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                     内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                     容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            
+            <Image
+                src={Fishbg}
+                alt={""}
+                class="p-Events__rightbg"    
+              />
+            
+
+            <div class="p-Events__cardswrapper__card">
+              <div class="p-Events__cardswrapper__card__flexbox">
+                <div class="p-Events__cardswrapper__card__flexbox__txtbox">
+                  <h3>合宿</h3>
+                  <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                  </p>
+                </div>
+                <Image 
+                src={dummy1} 
+                alt=""
+                class="slide1"
+                />
+              </div>
+            </div>
+            
+            
+            <Image
+                src={Fishbg}
+                alt={""}
+                class="p-Events__leftbg" 
+              />
+          
+
+            <div class="p-Events__cardswrapper__card">
+              <div class="p-Events__cardswrapper__card__flexbox">
+                <Image 
+                src={dummy1} 
+                alt=""
+                class="slide1"
+                />
+                <div class="p-Events__cardswrapper__card__flexbox__txtbox">
+                  <h3>文化祭</h3>
+                  <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                    容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        
+      
+        
+      
+    </section>
+  </main>
+</Layout>
+

@@ -1,0 +1,19 @@
+---
+let {title, date, content, color} = Astro.props;
+---
+
+<div class="award__element">
+    <div class="award__element__content">
+        <div class="award__element__content__left__rectangle" style=`background-color: ${color};`>
+        </div>
+        <div class="award__element__content__right">
+            <div class="award__element__content__right__top">
+                <h4 class="award__element__content__right__top__title">{title}</h4>
+                <div class="award__element__content__right__top__date">{date}</div>
+            </div>
+            <p>
+                {content}
+            </p>
+        </div>
+    </div>
+</div>

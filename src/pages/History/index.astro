@@ -1,0 +1,70 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Image } from "astro:assets";
+import '@/scss/history.scss';
+import '@fontsource/zen-kaku-gothic-new';
+
+
+const title = "";
+const description = "";
+const og_image = "";
+
+import Fishbg from "@/assets/images/fish_bg.webp";
+import dummy1 from "@/assets/images/dummy1.webp";
+import Slide from "@/components/Slide.astro";
+---
+
+<Layout title={title} , description={description} og_image={og_image}>
+    <main>
+        <section id="History-top" class="p-History-top">
+          <div>
+            <h1 class="p-History-top__ttl">History</h1>
+            <Image
+              src={Fishbg}
+                    alt={""}
+              class="p-activities__fish-bg"
+            />
+            <div class="slidewrapper">
+            <Slide>
+            </div>
+            <p>
+              内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+              内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+              内容内容内容内容内容内容内容内容内容内容内容内容
+            </p>
+        </div>
+        </section>
+
+        
+        <section class="p-timeline" id="timeline">
+          <div class="l-container">
+            <ul class="timeline-item_wrapper">
+          <li class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h2 class="timeline_ttl">2000
+                <div class="dot">●</div>
+              </h2>
+              <h3>サブタイトル</h3>
+              <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+              </p>
+            </div>
+            <div class="timeline-image">
+              <Image 
+						src={dummy1} 
+						alt=""
+						class="slide1"
+						/>
+            </div>
+          </li>
+        </ul>
+        </div>
+</section>
+
+    </main>
+</Layout>
