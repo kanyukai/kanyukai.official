@@ -1,3 +1,5 @@
+@use "./variables.scss" as *;
+
 *,
 body,
 ul {
@@ -7,110 +9,61 @@ ul {
 li {
   list-style: none;
 }
-/* ↓ スライドの外枠 */
-.slide0-wrapper {
-  width: 30%;
-  height: 300px;
-  position: relative;
-  overflow: hidden; /* はみ出したスライドを隠す */
+
+.swiper {
+  width: 25vw;
+  height: auto;
 }
-/*  ↓ スライド（コンテンツ） */
-.slide0 {
-  /*スライド全体 */
-  width: 300% !important;
-  height: 100% !important;
-  display: flex;
-  transition: all 0.3s;
-}
-.slide0 div {
-  /* スライド */
-  width: 33.33% !important;
-  height: 100% !important;
-  font-size: 16px;
-  display: flex;
-  justify-content: center; /* 水平方向に中央揃え */
-  align-items: center; /* 垂直方向に中央揃え */
-  text-align: center;
-  margin: 0 auto;
-}
-.slide1 {
-  /* スライドさせるために必要なクラス */
-  transform: translateX(0);
-}
-.slide2 {
-  /* スライドさせるために必要なクラス */
-  transform: translateX(-33.33%);
-  img {
-    margin-left: 50%;
-    width: 20vw;
-  }
-}
-.slide3 {
-  /* スライドさせるために必要なクラス */
-  transform: translateX(-66.66%);
-  img {
-    width: 20vw;
-  }
-}
-.slide0 div:nth-of-type(1) {
-  /* 背景色 */
-  background-color: #e1f3fc;
-}
-.slide0 div:nth-of-type(2) {
-  /* 背景色 */
-  background-color: #fce8f0;
-}
-.slide0 div:nth-of-type(3) {
-  /* 背景色 */
-  background-color: #e3f1e4;
-}
-/* ↓ 左右のボタン */
-.next0 {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  right: 10px;
-  bottom: 50%;
-  z-index: 10;
-  cursor: pointer;
-  border-top: solid 3px #000;
-  border-right: solid 3px #000;
-  -webkit-transform: rotate(45deg) translateY(50%);
-  transform: rotate(45deg) translateY(50%);
-}
-.prev0 {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  left: 25px;
-  bottom: 50%;
-  z-index: 10;
-  cursor: pointer;
-  border-top: solid 3px #000;
-  border-right: solid 3px #000;
-  -webkit-transform: rotate(-135deg) translateY(-50%);
-  transform: rotate(-135deg) translateY(-50%);
-}
-/* ↓ インジケーター */
-.indicator0 {
+
+.swiper-slide {
   width: 100%;
-  position: absolute;
-  bottom: 20px;
-  display: flex;
-  column-gap: 18px;
-  z-index: 10;
-  justify-content: center;
-  align-items: center;
+  height: auto;
 }
-.indicator0 li {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  list-style: none;
-  background-color: #fff;
-  border: 2px #000 solid;
-  cursor: pointer;
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.indicator0 li:first-of-type {
-  background-color: #000;
+
+.swiper-button-next {
+  color: black;
+}
+
+.swiper-button-prev {
+  color: black;
+}
+
+.swiper-button-next::after {
+  font-size: 3vw; /* 矢印のサイズを調整 */
+  font-weight: 500;
+  margin-right: 1.2vw;
+}
+
+.swiper-button-prev::after {
+  font-size: 3vw; /* 矢印のサイズを調整 */
+  font-weight: 500;
+  margin-left: 1.2vw;
+}
+
+.swiper-pagination-bullet {
+  background-color: black !important;
+  font-weight: 800;
+}
+
+@media (max-width: $breakpoint-md) {
+  .swiper {
+    width: 50vw;
+  }
+  .swiper-button-next::after {
+    font-size: 5vw; /* 矢印のサイズを調整 */
+    font-weight: 800;
+    margin-right: 1.2vw;
+  }
+
+  .swiper-button-prev::after {
+    font-size: 5vw; /* 矢印のサイズを調整 */
+    font-weight: 800;
+    margin-left: 1.2vw;
+  }
 }

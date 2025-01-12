@@ -4,93 +4,55 @@ import { Image } from "astro:assets";
 import dummy1 from "@/assets/images/dummy1.webp";
 import dummy2 from "@/assets/images/dummy2.webp";
 ---
-<script>
-const slide = document.getElementById('slide0');
-const prev = document.getElementById('prev0');
-const next = document.getElementById('next0');
-const indicator = document.getElementById('indicator0');
-const lists = document.querySelectorAll('.list0');
-const totalSlides = lists.length;
-let count = 0;
-let autoPlayInterval;
-function updateListBackground() {
-  for (let i = 0; i < lists.length; i++) {
-    lists[i].style.backgroundColor = i === count % totalSlides ? '#000' : '#fff';
-  }
-}
-function nextClick() {
-  slide.classList.remove(`slide${count % totalSlides + 1}`);
-  count++;
-  slide.classList.add(`slide${count % totalSlides + 1}`);
-  updateListBackground();
-}
-function prevClick() {
-  slide.classList.remove(`slide${count % totalSlides + 1}`);
-  count--;
-  if (count < 0) count = totalSlides - 1;
-  slide.classList.add(`slide${count % totalSlides + 1}`);
-  updateListBackground();
-}
-function startAutoPlay() {
-  autoPlayInterval = setInterval(nextClick, 3000);
-}
-function resetAutoPlayInterval() {
-  clearInterval(autoPlayInterval);
-  startAutoPlay();
-}
-next.addEventListener('click', () => {
-  nextClick();
-  resetAutoPlayInterval();
-});
-prev.addEventListener('click', () => {
-  prevClick();
-  resetAutoPlayInterval();
-});
-indicator.addEventListener('click', (event) => {
-  if (event.target.classList.contains('list')) {
-    const index = Array.from(lists).indexOf(event.target);
-    slide.classList.remove(`slide${count % totalSlides + 1}`);
-    count = index;
-    slide.classList.add(`slide${count % totalSlides + 1}`);
-    updateListBackground();
-    resetAutoPlayInterval();
-  }
-});
-startAutoPlay();
-</script>
-
-<!-- スライドの外枠 -->
-<div class="slide0-wrapper">
-    <!-- スライド（コンテンツ） -->
-    <div id="slide0" class="slide0">
-      <div>
-        <Image
-        src={dummy1}
-        alt=""
-        class="slide1"
-        />
-      </div>
-      <div>
-        <Image
-        src={dummy1}
-        alt=""
-        class="slide2"
-        />
-      </div>
-      <div>
-        <Image
-        src={dummy1}
-        alt=""
-        class="slide3"
-        />
-      </div>
+<body>
+  <div class="swiper">
+    <!-- スライド要素全体を囲む-->
+    <div class="swiper-wrapper">
+      <!--スライド-->
+      <div class="swiper-slide"><Image src={dummy1} alt={""}></div>
+      <div class="swiper-slide"><Image src={dummy2} alt={""}></div>
+      <div class="swiper-slide"><Image src={dummy1} alt={""}></div>
     </div>
-    <!-- 左右のボタン -->
-    <span id="prev0" class="prev0"></span>
-    <span id="next0" class="next0"></span>
-    <!-- インジケーター -->
-    <ul class="indicator0" id="indicator0">
-      <li class="list0"></li>
-      <li class="list0"></li>
-      <li class="list0"></li>
-    </ul>
+    <!--ページネーション オプション -->
+    <div class="swiper-pagination"></div>
+    
+    <!-- ナビゲーションボタン オプション -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+    <!-- スクロールバー オプション -->
+    <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" ></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const swiper = new Swiper(".swiper", {
+      // スライドを無限にループさせる
+      loop: true,
+      autoplay: {
+      /* スライドを3秒表示し切り替える*/
+      delay: 3000,
+      },
+      // ページネーションの設定
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+
+      // ナビゲーションボタンの設定
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+      // スクロールバーの設定
+      scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+      },
+    });
+  });
+</script>
+</body>

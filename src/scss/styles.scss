@@ -24,20 +24,12 @@ body * {
   padding: 5% 8%;
   margin: 5% auto;
   aspect-ratio: 16/9;
-  max-width: 1400px;
   @media (max-width: $breakpoint-md) {
     aspect-ratio: 5/4;
   }
 
   @media (max-width: $breakpointMobile) {
-    aspect-ratio:initial;
-    width: 100%;
-    height: 31rem;
-  }
-
-  @media (min-width: 1440px){
-    padding: 0;
-    aspect-ratio: 5/4;
+    aspect-ratio: 1/1;
   }
 }
 
@@ -119,13 +111,6 @@ header {
     padding: 2vw 7%;
   }
 
-
-
-
-  @media (min-width: 1980px){
-    padding: 2vw 7%;
-  }
- 
   .header__logo {
     width: 13.9vw;
     height: 5.9vw;
@@ -783,7 +768,6 @@ header {
           width: 100%;
           margin-top: 0.833vw;
           p {
-
             font-size: 1.11vw;
             @media (max-width: $breakpoint-md) {
               padding: 0;
@@ -866,19 +850,18 @@ header {
     filter: blur(1.5rem);
     z-index: -1;
 
-
     // &__element:hover {
     //   transition: all 0.3s ease;
     //   transform: scale(1.1);
     //   cursor: pointer;
     // }
 
-// 
-  // &__element:hover {
-  //   transition: all 0.3s ease;
-  //   transform: scale(1.1);
-  //   cursor: pointer;
-  // }
+    //
+    // &__element:hover {
+    //   transition: all 0.3s ease;
+    //   transform: scale(1.1);
+    //   cursor: pointer;
+    // }
   }
 }
 
@@ -1489,217 +1472,223 @@ footer {
   }
 }
 
-.history__wrapper__guide {
-  position: absolute;
-  right: 10%;
-  bottom: 0px;
-  z-index: 2;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  &__icon {
-    transform: rotate(-90deg);
-    margin: -0.417vw 0px 0px 0px;
-    width: 0.972vw;
-    height: 2.36vw;
-    min-width: 14px;
-    min-height: 34px;
-    transition: all 0.3s ease;
-  }
+.top_content {
+  h1 {
+    font-size: 2rem;
 
-  &__icon.shrinking {
-    transform: scale(0.8) rotate(-90deg);
-    @media (max-width: $breakpoint-md) {
-      transform: scale(0.8);
-    }
-  }
-
-  h6 {
-    margin-left: 1.67vw;
-    font-size: 1.11vw;
-  }
-
-  @media (max-width: $breakpoint-md) {
-    right: 30%;
-    flex-direction: column-reverse;
-    bottom: 5%;
-    &__icon {
-      transform: rotate(0);
+    .history__wrapper__guide {
+      position: absolute;
+      right: 10%;
+      bottom: 0px;
+      z-index: 2;
       display: flex;
-      justify-content: center;
-      margin-top: 1rem;
+      cursor: pointer;
+      align-items: center;
+      &__icon {
+        transform: rotate(-90deg);
+        margin: -0.417vw 0px 0px 0px;
+        width: 0.972vw;
+        height: 2.36vw;
+        min-width: 14px;
+        min-height: 34px;
+        transition: all 0.3s ease;
+      }
+
+      &__icon.shrinking {
+        transform: scale(0.8) rotate(-90deg);
+        @media (max-width: $breakpoint-md) {
+          transform: scale(0.8);
+        }
+      }
+
+      h6 {
+        margin-left: 1.67vw;
+        font-size: 1.11vw;
+      }
+
+      @media (max-width: $breakpoint-md) {
+        right: 30%;
+        flex-direction: column-reverse;
+        bottom: 5%;
+        &__icon {
+          transform: rotate(0);
+          display: flex;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+        h6 {
+          font-size: 2.08vw;
+          margin-left: -0rem;
+        }
+      }
     }
-    h6 {
-      font-size: 2.08vw;
-      margin-left: -0rem;
-    }
-  }
-}
-#period {
-  margin-left: 5%;
-  @media (max-width: $breakpoint-md) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 3% auto;
-  }
-}
-
-.p-period__shrink {
-  transform: rotate(-45deg);
-  border-bottom: 0.139vw solid #b0dfe7;
-  flex-shrink: 0;
-  position: relative;
-  width: 14.2vw;
-  height: 7.64vw;
-  display: inline-block;
-  margin-left: 10.4vw;
-  align-self: center;
-  @media (max-width: $breakpoint-xl) {
-    border-bottom: 2px solid #b0dfe7;
-  }
-
-  @media (max-width: $breakpoint-md) {
-    transform: rotate(-35deg);
-    margin-left: 0;
-    display: block;
-    width: 36.5vw;
-    margin: 13vw 0;
-    margin-left: 22vw;
-  }
-
-  &__left__circle {
-    position: absolute;
-    width: 2.22vw;
-    height: 2.22vw;
-    border-radius: 50%;
-    background-color: #b0dfe7;
-    bottom: -1.5vw;
-    left: -0.139vw;
-  }
-  &__right__circle {
-    position: absolute;
-    width: 1.11vw;
-    height: 1.11vw;
-    border-radius: 50%;
-    background-color: #b0dfe7;
-    bottom: -0.556vw;
-    right: -0.556vw;
-  }
-
-  &__date {
-    position: absolute;
-    bottom: -1.39vw;
-    left: 2.08vw;
-    text-align: center;
-    font-size: 4.44vw;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 6px;
-
-    @media (max-width: $breakpoint-md) {
-      margin-top: 35%;
-    }
-  }
-
-  &__title {
-    position: absolute;
-    bottom: -2.22vw;
-    left: 2.92vw;
-    font-size: 1.39vw;
-    font-family: "Zen Kaku Gothic New", serif;
-    font-weight: 300;
-    font-style: normal;
-    white-space: nowrap;
-  }
-
-  @media (max-width: $breakpoint-md) {
-    &__left__circle {
-      width: 5.33vw;
-      height: 5.33vw;
-      left: 0;
-      bottom: -2.67vw;
+    #period {
+      margin-left: 5%;
+      @media (max-width: $breakpoint-md) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 3% auto;
+      }
     }
 
-    &__right__circle {
-      width: 2.93vw;
-      height: 2.93vw;
-      bottom: -1.5vw;
+    .p-period__shrink {
+      transform: rotate(-45deg);
+      border-bottom: 0.139vw solid #b0dfe7;
+      flex-shrink: 0;
+      position: relative;
+      width: 14.2vw;
+      height: 7.64vw;
+      display: inline-block;
+      margin-left: 10.4vw;
+      align-self: center;
+      @media (max-width: $breakpoint-xl) {
+        border-bottom: 2px solid #b0dfe7;
+      }
+
+      @media (max-width: $breakpoint-md) {
+        transform: rotate(-35deg);
+        margin-left: 0;
+        display: block;
+        width: 36.5vw;
+        margin: 13vw 0;
+        margin-left: 22vw;
+      }
+
+      &__left__circle {
+        position: absolute;
+        width: 2.22vw;
+        height: 2.22vw;
+        border-radius: 50%;
+        background-color: #b0dfe7;
+        bottom: -1.5vw;
+        left: -0.139vw;
+      }
+      &__right__circle {
+        position: absolute;
+        width: 1.11vw;
+        height: 1.11vw;
+        border-radius: 50%;
+        background-color: #b0dfe7;
+        bottom: -0.556vw;
+        right: -0.556vw;
+      }
+
+      &__date {
+        position: absolute;
+        bottom: -1.39vw;
+        left: 2.08vw;
+        text-align: center;
+        font-size: 4.44vw;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 6px;
+
+        @media (max-width: $breakpoint-md) {
+          margin-top: 35%;
+        }
+      }
+
+      &__title {
+        position: absolute;
+        bottom: -2.22vw;
+        left: 2.92vw;
+        font-size: 1.39vw;
+        font-family: "Zen Kaku Gothic New", serif;
+        font-weight: 300;
+        font-style: normal;
+        white-space: nowrap;
+      }
+
+      @media (max-width: $breakpoint-md) {
+        &__left__circle {
+          width: 5.33vw;
+          height: 5.33vw;
+          left: 0;
+          bottom: -2.67vw;
+        }
+
+        &__right__circle {
+          width: 2.93vw;
+          height: 2.93vw;
+          bottom: -1.5vw;
+        }
+
+        h2 {
+          font-size: 6.4vw;
+          bottom: -1.33vw;
+          left: 10vw;
+          text-align: center;
+        }
+        h5 {
+          font-size: 3.47vw;
+          left: 5.5vw;
+          top: 7vw;
+        }
+      }
     }
 
-    h2 {
-      font-size: 6.4vw;
-      bottom: -1.33vw;
-      left: 10vw;
-      text-align: center;
-    }
-    h5 {
-      font-size: 3.47vw;
-      left: 5.5vw;
-      top: 7vw;
-    }
-  }
-}
+    .p-period__detail {
+      display: inline-block;
+      flex-shrink: 0;
+      width: 34.7vw;
+      height: 34.7vw;
+      border: 1px solid #000;
+      position: relative;
+      padding: 3%;
+      margin-left: 20%;
+      &__year {
+        font-size: 4.44vw;
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 8px;
+        font-weight: bold;
+      }
 
-.p-period__detail {
-  display: inline-block;
-  flex-shrink: 0;
-  width: 34.7vw;
-  height: 34.7vw;
-  border: 1px solid #000;
-  position: relative;
-  padding: 3%;
-  margin-left: 20%;
-  &__year {
-    font-size: 4.44vw;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 8px;
-    font-weight: bold;
-  }
+      &__title {
+        font-size: 1.67vw;
+        font-family: "Zen Kaku Gothic New", serif;
+        font-weight: 500;
+        font-style: normal;
+      }
 
-  &__title {
-    font-size: 1.67vw;
-    font-family: "Zen Kaku Gothic New", serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  p {
-    margin-top: 3%;
-    font-size: 1.39vw;
-    font-family: "Zen Kaku Gothic New", serif;
-    font-weight: 300;
-    font-style: normal;
-    white-space: pre-wrap;
-  }
-  @media (max-width: $breakpoint-md) {
-    margin: 5% 0;
-    width: 87.5vw;
-    height: auto;
-    p {
-      font-size: 2.66vw;
+      p {
+        margin-top: 3%;
+        font-size: 1.39vw;
+        font-family: "Zen Kaku Gothic New", serif;
+        font-weight: 300;
+        font-style: normal;
+        white-space: pre-wrap;
+      }
+      @media (max-width: $breakpoint-md) {
+        margin: 5% 0;
+        width: 87.5vw;
+        height: auto;
+        p {
+          font-size: 2.66vw;
+        }
+        &__year {
+          font-size: 6.4vw;
+        }
+        &__title {
+          font-size: 3.2vw;
+        }
+      }
     }
-    &__year {
-      font-size: 6.4vw;
+
+    .p-period__detail::before {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      background-color: $bgBlue;
+      inset: 0.486vw -0.486vw -0.486vw 0.486vw;
+      @media (max-width: $breakpoint-md) {
+        inset: 1.04vw -1.04vw -1.04vw 1.04vw;
+      }
     }
-    &__title {
-      font-size: 3.2vw;
+
+    .history {
+      display: flex;
+      flex-direction: column;
     }
   }
-}
-
-.p-period__detail::before {
-  position: absolute;
-  z-index: -1;
-  content: "";
-  background-color: $bgBlue;
-  inset: 0.486vw -0.486vw -0.486vw 0.486vw;
-  @media (max-width: $breakpoint-md) {
-    inset: 1.04vw -1.04vw -1.04vw 1.04vw;
-  }
-}
-
-.history { 
-  display: flex;
-  flex-direction: column;
 }

@@ -7,7 +7,12 @@ import { Image } from "astro:assets";
 const alt = "...";
 const insta = "https://www.instagram.com/gu_kanyukai_since.1953/"
 const twitter = "https://x.com/g_kanyukai"
+
+// import { getEvents } from "../lib/microcms";
+// const response= await getEvents({ fields: ["id", "title","contents","og_image"] });
 ---
+
+
 
 <div class="events">
     <div class="events__link">
@@ -28,7 +33,25 @@ const twitter = "https://x.com/g_kanyukai"
             <Label jp="年間行事" en="Events"/>
         </div>
         <div class="events__left__content">
-            <div class="events__left__content__title">月例釣行</div>
+            <!-- <ul>
+                {
+                  response.contents.map((awards: any) => (
+                  <Award title={awards.title} date={awards.date} 
+                  content={awards.description} color="#EEEC9B"/>
+                  ))
+                }      
+            </ul> -->
+            <div class="events__left__content__title">月例釣行
+                <!-- <ul>
+                    {
+                      response.contents.map((events: any) => (
+                    //   <{events.title} <p>{events?.contents}</p> />
+                    <h1>{events.title}</h1>
+                    <p>{events.contents}</p>
+                      ))
+                    }      
+                </ul> -->
+            </div>
             <p>{paragraph}</p>
         </div>
     </div>

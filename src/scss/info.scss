@@ -431,9 +431,9 @@ body {
 
 @media (max-width: $breakpoint-md) {
   .p-Events__cardswrapper__card__flexbox__txtbox {
-    margin: 0 auto;
     align-items: center;
     width: 90%;
+    margin: 0 auto;
     h3 {
       font-size: 20px;
       border-bottom: none;
@@ -445,14 +445,11 @@ body {
       margin-top: 6%;
       font-size: 11px;
     }
-    div {
-      width: 90%;
-      height: auto;
+    .leftimgwrapper {
       margin: 0 auto;
+      height: auto;
       img {
-        margin: 0 auto;
         width: 100%;
-        height: auto;
       }
     }
   }
@@ -493,5 +490,16 @@ body {
     margin: 0 auto !important;
     width: 85% !important;
     height: auto !important;
+  }
+}
+
+.rightimg {
+  margin-left: 3%;
+  height: 94%;
+}
+
+@media (max-width: $breakpoint-md) {
+  .rightimg {
+    margin-left: 0;
   }
 }

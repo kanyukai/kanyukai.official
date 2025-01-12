@@ -2,6 +2,7 @@
 import type { MicroCMSQueries, MicroCMSListContent } from "microcms-js-sdk";
 import { createClient } from "microcms-js-sdk";
 
+
 const client1 = createClient({
   serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
   apiKey: import.meta.env.MICROCMS_API_KEY,
@@ -51,7 +52,7 @@ export type Activities= {
   date: string;
   title: string;
   content:string;
-  images?: {
+  image: {
     url: string;
   };
 };
@@ -79,7 +80,7 @@ export const getActivitiesDetail = async (
 
 
  // Invitation型定義
- export type Invitation= {
+export type Invitation= {
   id: string;
   date: string;
   title: string;
@@ -107,16 +108,49 @@ export const getInvitationDetail = async (
   });
 };
 
+// Events型定義
+export type Events= {
+  id: string;
+  title: string;
+  contents:string;
+  images?: {
+    url: string;
+  };
 
- //history型定義
- export type History= {
+};
+export type EventsResponse = {
+  totalCount: number;
+  offset: number;
+  limit: number;
+  contents: Events[];
+};
+
+//APIの呼び出し
+export const getEvents = async (queries?: MicroCMSQueries) => {
+  return await client2.get<EventsResponse>({ endpoint: "events", queries });
+};
+export const getEventsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  return await client2.getListDetail<Events>({
+    endpoint: "events",
+    contentId,
+    queries,
+  });
+};
+
+
+//history型定義
+export type History= {
   id: string;
   year: string;
+
   title: string;
   contents:string;
   og_image?:{url:string};
+}
 
-};
 export type HistoryResponse = {
   totalCount: number;
   offset: number;

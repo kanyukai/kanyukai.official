@@ -134,6 +134,8 @@
 // }
 
 
+
+
 import type { Signal } from "@preact/signals";
 import Period from "./Period.tsx";
 import { useEffect, useRef, useState } from "preact/hooks";
@@ -160,7 +162,7 @@ export default function HistoryComponent({ count }: Props) {
   useEffect(() => {
     async function fetchPeriods() {
       try {
-        const response = await getHistory({ fields: ["year", "title", "contents"] });
+        const response= await getHistory({ fields: ["year", "title", "contents"] });
         const fetchedPeriods = response.contents.map((history: any) => ({
           year: history.year,
           title: history.title,
