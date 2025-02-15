@@ -71,7 +71,7 @@ export type Activities = {
   date: string;
   title: string;
   content: string;
-  images?: {
+  image?: {
     url: string;
   };
 };

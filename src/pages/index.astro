@@ -24,7 +24,7 @@ const count = signal(0);
 
 // microCMSの設定
 import { getAwards } from "../lib/microcms";
-const response = await getAwards({ fields: ["id", "title","date","description"] });
+const response = await getAwards({ fields: ["id", "title","date","contents"] });
 import { getInvitation } from "../lib/microcms";
 const response3= await getInvitation({ fields: ["id", "title","date","contents","og_image"] });
 
@@ -42,9 +42,9 @@ const response3= await getInvitation({ fields: ["id", "title","date","contents",
 			</div>
 			<Label jp="普段の活動" en="Activity"/>
 			
-			<Activity title="タイトル" date="YYYY/MM/DD" imgSrcs={[img2, img3, img4, img5]} content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" />
+			<!-- <Activity title="タイトル" date="YYYY/MM/DD" imgSrcs={[img2, img3, img4, img5]} content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" /> -->
 			<div class="button_margin">
-				<ViewButton link="/activities"/>
+				<ViewButton link="/kanyukai.official/Activities"/>
 			</div>
 		</section>
 
@@ -61,7 +61,7 @@ const response3= await getInvitation({ fields: ["id", "title","date","contents",
 					{
 					  response.contents.map((awards: any) => (
 					  <Award title={awards.title} date={awards.date} 
-					  content={awards.description} color="#EEEC9B"/>
+					  content={awards.contents} color="#EEEC9B"/>
 					  ))
 					}      
 			    </ul>

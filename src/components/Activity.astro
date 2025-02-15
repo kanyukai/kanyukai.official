@@ -33,7 +33,7 @@ const activities = await getActivitiesDetail(activitiesId as string);
                 </div>
 
                 <div class="p-article__content__right">
-                    <img src={activities?.images?.url} />
+                    <img src={activities.image?.url} style="width:175px; height:150px; object-fit: cover;"/>
 
                 </div>
             </div>
