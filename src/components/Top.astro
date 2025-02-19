@@ -2,49 +2,67 @@
 import image1 from "../assets/image 1.png";
 import image2 from "../assets/sample.jpg";
 import image3 from "../assets/image 3.png";
-import image4 from "../assets/image 4.png"
+import image4 from "../assets/image 4.png";
 import image5 from "../assets/image 5.png";
 import LogoBig from "./LogoBig.astro";
 import LogoShort from "./LogoShort.astro";
-import {BigUnderline, MdLogo} from "../utils/svgs.tsx";
+import { BigUnderline, MdLogo } from "../utils/svgs.tsx";
 import "../scss/top.scss";
 import SlideComponent from "./SlideShow.tsx";
 
-const slides = [
-  image1,
-  image2,
-  image3,
-  image4,
-  image5
-];
+import { getForm, getFormDetail } from "../lib/microcms";
+const response = await getForm({ fields: ["id","url"]});
 
+
+const { formId } = Astro.params;
+const form = await getFormDetail(formId as string);
+
+const slides = [image1, image2, image3, image4, image5];
+console.log(response);
 ---
+
 <section id="top" class="p-top flex w-full">
-    <span class="fish">
-        <LogoShort />
-    </span>
-    
-    <span class="p-top__md__fish">
-      <MdLogo/>
-    </span>
-    
-    <div class="p-top__left__content">
-      <h1 class="zenkaku_normal tracking-widest p-top__left__content__headline">Enjoy with us!</h1>
-      <div class="p-top__left__content__join__link flex_all_center">
-        <div class="p-top__left__content__join__link__content relative">
-          <a class="p-top__left__content__join__link__content__link">Join us!</a>
-          <div class="p-top__left__content__join__link__content__svg">
-            <BigUnderline/>
+  <span class="fish">
+    <LogoShort />
+  </span>
+
+  <span class="p-top__md__fish">
+    <MdLogo />
+  </span>
+
+  <div class="p-top__left__content">
+    <h1 class="zenkaku_normal tracking-widest p-top__left__content__headline">
+      Enjoy with us!
+    </h1>
+    {
+      response.contents.map((form: any) => (
+        <div class="p-top__left__content__join__link flex_all_center">
+          <div class="p-top__left__content__join__link__content relative">
+            <a class="p-top__left__content__join__link__content__link"
+              href={form.url}
+            >
+              Join us!
+            </a>
+
+            <div class="p-top__left__content__join__link__content__svg">
+              <BigUnderline />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="p-top__right__content w-[60%]">
-      <div class="p-top__right__content__img__wrapper relative">
-        <span class="fish_big">
-          <LogoBig/>
+      ))
+    }
+  </div>
+  <div class="p-top__right__content w-[60%]">
+    <div class="p-top__right__content__img__wrapper relative">
+      <span class="fish_big">
+        <LogoBig />
       </span>
-        <SlideComponent imgProps={slides} showIndicators={false} showProgressBar={true} client:only="preact"/>
-      </div>
+      <SlideComponent
+        imgProps={slides}
+        showIndicators={false}
+        showProgressBar={true}
+        client:only="preact"
+      />
+    </div>
   </div>
 </section>

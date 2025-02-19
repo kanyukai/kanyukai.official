@@ -25,6 +25,8 @@ const count = signal(0);
 // microCMSの設定
 import { getAwards } from "../lib/microcms";
 const response = await getAwards({ fields: ["id", "title","date","contents"] });
+import { getActivities } from "../lib/microcms";
+const response2 = await getActivities({ fields: ["id", "title","date","description","image"] });
 import { getInvitation } from "../lib/microcms";
 const response3= await getInvitation({ fields: ["id", "title","date","contents","og_image"] });
 
@@ -41,8 +43,17 @@ const response3= await getInvitation({ fields: ["id", "title","date","contents",
 				<Logo/>
 			</div>
 			<Label jp="普段の活動" en="Activity"/>
-			
-			<!-- <Activity title="タイトル" date="YYYY/MM/DD" imgSrcs={[img2, img3, img4, img5]} content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" /> -->
+			<ul>
+
+				{
+					response.contents.map((activities: any) => (
+					<Activity title={activities.title} date={activities.date}   
+					 content={activities.description} />
+					<img src={activities.image?.url} style="width:175px; height:100px; object-fit: cover;"/>
+					))
+				 }     
+			 </ul>
+			 <!-- <Activity title="タイトル" date="YYYY/MM/DD" imgSrcs={[img2, img3, img4, img5]} content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" /> -->
 			<div class="button_margin">
 				<ViewButton link="/kanyukai.official/Activities"/>
 			</div>

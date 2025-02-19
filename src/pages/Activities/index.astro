@@ -74,8 +74,7 @@ const response = await getActivities({ fields: ["id", "title","date","descriptio
 						{
 							response.contents.map((activities: any) => (
 							<Activity title={activities.title} date={activities.date}   
-					 		content={activities.description} />
-							<Activity image={activities.image?.url} style="width:175px; height:100px; object-fit: cover;"/>
+					 		content={activities.contents} src={activities.image?.url} style="width:175px; height:100px; object-fit: cover;"/>
 							))
 					 	}     
 					 </ul>
@@ -141,7 +140,6 @@ const response = await getActivities({ fields: ["id", "title","date","descriptio
 						</ul>
 				  </div>
 				</div>
-
 			  </li>
 			</ul> -->
 		  </div>

@@ -12,6 +12,11 @@ const client2 = createClient({
   apiKey: import.meta.env.MICROCMS_API_KEY2,
 }); //client1に含まれる情報：invitation
 
+const client3 = createClient({
+  serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN3,
+  apiKey: import.meta.env.MICROCMS_API_KEY3,
+}); //client3に含まれる情報：
+
 // Awards型定義
 export type Awards = {
   id: string;
@@ -71,7 +76,7 @@ export type Activities = {
   date: string;
   title: string;
   content: string;
-  image?: {
+  images?: {
     url: string;
   };
 };
@@ -164,3 +169,32 @@ export const getHistoryDetail = async (
     queries,
   });
 };
+
+
+// form型定義
+export type Form= {
+  url:string;
+  id:string;
+};
+export type FormResponse = {
+  totalCount: number;
+  offset: number;
+  limit: number;
+  contents: Form[];
+};
+
+//APIの呼び出し
+export const getForm = async (queries?: MicroCMSQueries) => {
+  return await client3.get<FormResponse>({ endpoint: "form", queries });
+};
+export const getFormDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  return await client3.getListDetail<Form>({
+    endpoint: "form",
+    contentId,
+    queries,
+  });
+};
+
