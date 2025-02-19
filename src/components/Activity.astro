@@ -8,7 +8,7 @@ import { Image } from "astro:assets";
 
 import { getActivities, getActivitiesDetail } from "../lib/microcms";
 const response2 = await getActivities({
-    fields: ["id", "title", "date", "content", "images?.url"],
+    fields: ["id", "title", "date", "content", "image"],
 });
 const { activitiesId } = Astro.params;
 const activities = await getActivitiesDetail(activitiesId as string);
@@ -31,10 +31,8 @@ const activities = await getActivitiesDetail(activitiesId as string);
                         {activities.content}
                     </p>
                 </div>
-
                 <div class="p-article__content__right">
-                    <img src={activities?.images?.url} />
-
+                    <img src={activities.image?.url} style="width:175px; height:150px; object-fit: cover; z-index: 100;"/>
                 </div>
             </div>
         </section>
