@@ -43,17 +43,7 @@ const response3= await getInvitation({ fields: ["id", "title","date","contents",
 				<Logo/>
 			</div>
 			<Label jp="普段の活動" en="Activity"/>
-			<ul>
-
-				{
-					response.contents.map((activities: any) => (
-					<Activity title={activities.title} date={activities.date}   
-					 content={activities.description} />
-					<img src={activities.image?.url} style="width:175px; height:100px; object-fit: cover;"/>
-					))
-				 }     
-			 </ul>
-			 <!-- <Activity title="タイトル" date="YYYY/MM/DD" imgSrcs={[img2, img3, img4, img5]} content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" /> -->
+					<Activity />
 			<div class="button_margin">
 				<ViewButton link="/kanyukai.official/Activities"/>
 			</div>
@@ -83,7 +73,7 @@ const response3= await getInvitation({ fields: ["id", "title","date","contents",
 				<Award title="全国大会 ＜ 総合３位 ＞" date="YYYY/DD/MM" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" color="#D1CAB4"/> -->
 			</div>
 			<div class="button_margin">
-				<ViewButton link="/kanyukai.official/Awards"/>
+				<ViewButton link="/kanyukai.official/awards"/>
 			</div>
 		</section>
 		<Headline title="Invitation"/>
