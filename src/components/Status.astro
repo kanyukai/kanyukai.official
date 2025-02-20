@@ -6,6 +6,10 @@ import img4 from '../assets/image 4.png';
 const imgAlt = "..."
 const insta = "https://www.instagram.com/gu_kanyukai_since.1953/"
 const twitter = "https://x.com/g_kanyukai"
+
+
+import { getInformation } from "../lib/microcms";
+const response = await getInformation({ fields: ["location", "schedule","contents","member","id"] });
 ---
 
 <div class="status">
@@ -13,11 +17,13 @@ const twitter = "https://x.com/g_kanyukai"
         <div class="status__left__pc__label">
             <Label jp="基本情報" en="About"/>
         </div>
-        <div class="status__left__content">
+        {
+			response.contents.map((information: any) => (
+            <div class="status__left__content">
             <StatusElem title="正式名称" content="学習院大学　輔仁会竿友会同好会"/>
-            <StatusElem title="活動場所" content="そこらへんの河原"/>
-            <StatusElem title="活動日" content="毎週土日・祝日"/>
-            <StatusElem title="所属人数" content="500人(男女比5:5)"/>
+            <StatusElem title="活動場所" content={information.location}/>
+            <StatusElem title="活動日" content={information.schedule}/>
+            <StatusElem title="所属人数" content={information.member}/>
             <div class="status__left__content__link">
                 <a href="https://kanyukai.jimdofree.com/">旧ブログのリンクはこちらから</a>
                 <a href={insta} class="status__left__content__link__insta">
@@ -31,7 +37,11 @@ const twitter = "https://x.com/g_kanyukai"
                     </svg>    
                 </a>
             </div>
+
         </div>
+        ))
+      } 
+          
     </div>
     <div class="status__right">
         <Image src={img4} alt={imgAlt} style="width: 100%; height: auto;" />
