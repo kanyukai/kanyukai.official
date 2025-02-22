@@ -22,6 +22,11 @@ const slides = [
   { src: "/assets/images/dummy2.webp", alt: "スライド2" },
   { src: "/assets/images/dummy1.webp", alt: "スライド3" },
 ];
+
+
+import { getInformation } from "../../lib/microcms";
+const response = await getInformation({ fields: ["location", "schedule","contents","member","id"] });
+
 ---
 
 <Layout title={title} description={description} og_image={og_image}>
@@ -98,7 +103,9 @@ const slides = [
             </div>
           </div>
 
-          <div class="p-activities__contentswrapper">
+          {
+							response.contents.map((information: any) => (
+              <div class="p-activities__contentswrapper">
             <Image
               src={dummy2}
               alt=""
@@ -111,34 +118,25 @@ const slides = [
               </div>
               <div class="p-activities__contentswrapper__leftcontents__wrapper">
                 <h2 class="contentstitle">活動場所</h2>
-                <p>そこらへんの河原</p>
+                <p>{information.location}</p>
               </div>
               <div class="p-activities__contentswrapper__leftcontents__wrapper">
                 <h2 class="contentstitle">活動日</h2>
-                <p>毎週土日・祝日</p>
+                <p>{information.schedule}</p>
               </div>
               <div class="p-activities__contentswrapper__leftcontents__wrapper">
                 <h2 class="contentstitle">所属人数</h2>
-                <p>500人(男女比5:5)</p>
+                <p>{information.member}</p>
               </div>
             </div>
             <div class="p-activities__contentswrapper__rightcontents">
               <h2 class="contentstitle">活動内容</h2>
               <p>
-                竿友会同好会では１年間を通して脱初心者を目指す「月例釣
-                行」を月に一度行っております。
-                そのほかにも中級者、上級者は「ステップアップ釣行」とし
-                て有志釣行を2，3，4年が企画し、その都度釣行を行っていま す。
-                また、竿友会は全日本学生釣魚連盟　関東支部（学釣連）に
-                所属しておりメーカー主催の講習会や大会、学釣連主催のイ
-                ベントや大会に参加しています。
-                そのほかにも体育会系に所属しているため、大学主催のイベ
-                ントや大学祭への出店など大学生活をより楽しむことが出来
-                る事が最大の魅力です。
+                {information.contents}
               </p>
             </div>
             <div class="link-wrapper">
-              <p class="link-txt pc-none">旧ブログのリンクはこちらから</p>
+              <a  class="link-txt pc-none" href="https://kanyukai.jimdofree.com/">旧ブログのリンクはこちらから</a>
 
               <div class="icon-wrapper pc-none">
                 <Image src={Instagram} alt="" />
@@ -146,6 +144,9 @@ const slides = [
               </div>
             </div>
           </div>
+        ))
+      } 
+          
         </div>
       </section>
 

@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "preact/hooks";
+// import { getHistory ,getHistoryDetail} from "../lib/microcms";
+// const response = await getHistory({ fields: ["id", "title","year","contents"] });
 
 interface periodProps {
   title: string;
   year: string;
-  contents: string;
+  paragraph: string;
   periodClick: () => void;
 }
 
 export default function Period({
   title,
   year,
-  contents,
+  paragraph,
   periodClick,
 }: periodProps) {
   const periodRef = useRef<HTMLDivElement>(null);
@@ -84,7 +86,7 @@ export default function Period({
         <div class="p-period__detail">
           <h3 class="p-period__detail__year">{year}</h3>
           <h4 class="p-period__detail__title">{title}</h4>
-          <p>{contents}</p>
+          <p>{paragraph}</p>
         </div>
       ) : (
         <div class="p-period__shrink" onClick={onShrinkClick}>

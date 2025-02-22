@@ -198,3 +198,33 @@ export const getFormDetail = async (
   });
 };
 
+// information型定義
+export type Information= {
+  location:string;
+  schedule:string;
+  member:string;
+  contents:string;
+  id:string;
+};
+export type InformationResponse = {
+  totalCount: number;
+  offset: number;
+  limit: number;
+  contents: Form[];
+};
+
+//APIの呼び出し
+export const getInformation = async (queries?: MicroCMSQueries) => {
+  return await client3.get<FormResponse>({ endpoint: "information", queries });
+};
+export const getInformationDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  return await client3.getListDetail<Information>({
+    endpoint: "form",
+    contentId,
+    queries,
+  });
+};
+

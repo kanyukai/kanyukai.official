@@ -137,7 +137,7 @@ export default function YearAward({
                 date={award.date}
                 tags={award.tags}
                 title={award.title}
-                content={award.content}
+                contents={award.contents}
                 images={award.images}
               />
             </div>
