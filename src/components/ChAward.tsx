@@ -2,7 +2,7 @@ import "../scss/chAward.scss";
 import type { Award } from "../pages/awards.astro";
 import SlideComponent from "./SlideShow";
 
-export default function ChAward({ date, tags, title, content, images }: Award) {
+export default function ChAward({ date, tags, title, contents, images }: Award) {
   return (
     <div class="ch__award">
       <div class="ch__award__top">
@@ -22,14 +22,14 @@ export default function ChAward({ date, tags, title, content, images }: Award) {
       <div class="ch__award__main">
         {!images || images.length !== 1 ? (
           <div class="ch__award__main__description">
-            <p>{content}</p>
+            <p>{contents}</p>
             <div class="ch__award__main__description__img__wrapper">
               <SlideComponent imgProps={images} />
             </div>
           </div>
         ) : (
           <div class="ch__award__main__fewImgContainer">
-            <p>{content}</p>
+            <p>{contents}</p>
 
             {images[0] && (
               <div class="ch__award__main__fewImgContainer__imgs">

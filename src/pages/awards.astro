@@ -12,7 +12,7 @@ const title = "";
 const description = "";
 const og_image = "";
 
-const optimized_demo = await getImage({src: demo, format: 'webp'})
+// const optimized_demo = await getImage({src: demo, format: 'webp'})
 // import { getAwards } from "../lib/microcms";
 // const response = await getAwards({ fields: ["id", "title","date","description"] });
 import { getAwards ,getAwardsDetail} from "../lib/microcms";
@@ -34,7 +34,7 @@ const awards: Award[] = response.contents.map((awardscms: any) => ({
   date: awardscms.date,  // 直接アクセス
   tags: [awardscms.year,],  // 必要に応じてタグを追加
   title: awardscms.title,
-  content: awardscms.contents,
+  contents: awardscms.contents,
   images: awardscms.ogimage?.url ? [awardscms.ogimage.url] : [],  // 画像がある場合のみ配列に
 }));
 
