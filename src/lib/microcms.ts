@@ -228,3 +228,32 @@ export const getInformationDetail = async (
   });
 };
 
+// photo型定義
+export type Photo= {
+    photo?:{
+    url:string;
+  }
+  id:string;
+};
+export type PhotoResponse = {
+  totalCount: number;
+  offset: number;
+  limit: number;
+  contents: Form[];
+};
+
+//APIの呼び出し
+export const getPhoto = async (queries?: MicroCMSQueries) => {
+  return await client2.get<FormResponse>({ endpoint: "photo", queries });
+};
+export const getPhotoDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  return await client2.getListDetail<Photo>({
+    endpoint: "form",
+    contentId,
+    queries,
+  });
+};
+
