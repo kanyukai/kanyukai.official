@@ -45,9 +45,9 @@ body * {
 }
 
 h1 {
-  font-size: 6.7vw;
+  font-size: 4.5vw;
   @media (max-width: $breakpoint-xl) {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
   }
 
   @media (max-width: $breakpoint-lg) {
