@@ -1,5 +1,9 @@
 ---
 import { HeaderLogo } from "../utils/svgs"
+
+import { getForm, getFormDetail } from "../lib/microcms";
+const response = await getForm({ fields: ["id","url"]});
+
 ---
 
 <header id="header">
@@ -47,7 +51,11 @@ import { HeaderLogo } from "../utils/svgs"
             <a class="cursor-pointer" href="/kanyukai.official/History">歴史</a>
         </li>
         <li class="header__invitation">
-            <a class="helvetica_light">Join us!</a>
+            {
+      response.contents.map((form: any) => (
+            <a class="helvetica_light"href={form.url}>Join us!</a>
+            ))
+    }
         </li>
     </ul>
 </header>
