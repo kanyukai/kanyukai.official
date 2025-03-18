@@ -20,6 +20,7 @@ import Logo from "../components/Logo.astro";
 import Photo from "../components/Photo.astro";
 import Events from "../components/Events.astro";
 import HistoryComponent from "../components/HistoryComponent";
+import type { PeriodType } from "../components/HistoryComponent"; 
 const count = signal(0);
 
 // microCMSの設定
@@ -29,8 +30,16 @@ import { getActivities } from "../lib/microcms";
 const response2 = await getActivities({ fields: ["id", "title","date","description","image"] });
 import { getInvitation } from "../lib/microcms";
 const response3= await getInvitation({ fields: ["id", "title","date","contents","og_image"] });
+import { getHistory ,getHistoryDetail} from "../lib/microcms";
+const response4 = await getHistory({ fields: ["id", "title","year","contents","ogimage"] });
+const { historyId } = Astro.params;
+const history = await getHistoryDetail(historyId as string);
 
-
+const periods: PeriodType[] = response4.contents.map((item: any) => ({
+  year: item.year,
+  title: item.title,
+  paragraph: item.contents, // API の `contents` を `paragraph` に変換
+}));
 ---
 <Layout title={title} , description={description} og_image={og_image}>
 	<main class="top_page">
@@ -111,7 +120,7 @@ const response3= await getInvitation({ fields: ["id", "title","date","contents",
 		</section>
 		<Headline title="History"/>
 		<section id="history" class="p-history">
-			<HistoryComponent client:only="preact" count={count} />
+			<HistoryComponent client:only="preact" count={count} periods={periods} />;
 
 			<div class="button_margin">
 				<ViewButton link="/kanyukai.official/History"/>
