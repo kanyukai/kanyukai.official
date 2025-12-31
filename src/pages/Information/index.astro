@@ -1,5 +1,5 @@
 ---
-let { title, date, content } = Astro.props;
+let { title } = Astro.props;
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import "@/scss/info.scss";
@@ -8,24 +8,13 @@ import "@fontsource/zen-kaku-gothic-new";
 const description = "";
 const og_image = "";
 
-import Slide from "../../components/Slide.astro";
+import Slide from "../../components/information/Slide.astro";
 import Fishbg from "@/assets/images/fish_bg.webp";
-import dummy1 from "@/assets/images/dummy1.webp";
-import dummy2 from "@/assets/images/dummy2.webp";
 import Instagram from "@/assets/images/Instagram.webp";
 import X from "@/assets/images/X.webp";
-import Top from "../../components/Top.astro";
-// import SlideShow2 from '../../components/Slideshow.astro';
-// 画像リスト
-const slides = [
-  { src: "/assets/images/dummy1.webp", alt: "スライド1" },
-  { src: "/assets/images/dummy2.webp", alt: "スライド2" },
-  { src: "/assets/images/dummy1.webp", alt: "スライド3" },
-];
-
-
 import { getInformation } from "../../lib/microcms";
-const response = await getInformation({ fields: ["location", "schedule","contents","member","id"] });
+const response = await getInformation({ fields: ["location", "schedule","contents","member","id","slide","fishing-text","fishing-image","camp-text","camp-image","fes-text","fes-image"] });
+const information = response.contents[0]!;
 
 ---
 
@@ -71,7 +60,7 @@ const response = await getInformation({ fields: ["location", "schedule","content
       <h1 class="p-Info-top__ttl">Information</h1>
       <Image src={Fishbg} alt={""} class="p-activities__fish-bg" />
       <div class="slidewrapper">
-        <Slide />
+        <Slide images={information.slide} />
       </div>
 
       <div class="p-Status__flexbox pc-none">
@@ -106,11 +95,6 @@ const response = await getInformation({ fields: ["location", "schedule","content
           {
 							response.contents.map((information: any) => (
               <div class="p-activities__contentswrapper">
-            <Image
-              src={dummy2}
-              alt=""
-              class="p-activities__contentswrapper__img pc-none"
-            />
             <div class="p-activities__contentswrapper__leftcontents">
               <div class="p-activities__contentswrapper__leftcontents__wrapper">
                 <h2 class="contentstitle">正式名称</h2>
@@ -165,18 +149,16 @@ const response = await getInformation({ fields: ["location", "schedule","content
               <Image src={Fishbg} alt={""} class="pc-none" />
             </div>
           </div>
-          <!-- <SlideShow2 class="sp-none" /> -->
           <div class="p-Events__cardswrapper">
             <div class="p-Events__cardswrapper__card">
               <div class="p-Events__cardswrapper__card__flexbox">
+                <img src={information["fishing-image"].url} alt="月例釣行" class="slide1 sp-none" width={information["fishing-image"].width} height={information["fishing-image"].height} />
                 <div class="p-Events__cardswrapper__card__flexbox__txtbox">
                   <h3>月例釣行</h3>
                   <div>
-                    <Image src={dummy1} alt="" class="slide1 pc-none" />
+                    <img src={information["fishing-image"].url} alt="月例釣行" class="slide1 pc-none" width={information["fishing-image"].width} height={information["fishing-image"].height} />
                   </div>
-                  <p>
-                    竿友会では毎月一度、会員同士で釣りに出かける「月例釣行」を実施しています。釣りの技術を磨きながら、経験豊富な先輩からアドバイスを受けることができる貴重な機会です。海釣りや川釣りなど、さまざまなフィールドでの釣行を楽しみ、釣果を競い合うこともあります。釣り初心者でも気軽に参加できるアットホームな雰囲気が魅力です。
-                  </p>
+                  <p>{information["fishing-text"]}</p>
                 </div>
               </div>
             </div>
@@ -188,13 +170,11 @@ const response = await getInformation({ fields: ["location", "schedule","content
                 <div class="p-Events__cardswrapper__card__flexbox__txtbox">
                   <h3>合宿</h3>
                   <div class="img-wrapper">
-                    <Image src={dummy1} alt={""} class="pc-none" />
+                    <img src={information["camp-image"].url} alt="合宿" class="pc-none" width={information["camp-image"].width} height={information["camp-image"].height} />
                   </div>
-                  <p>
-                    年に一度の合宿では、普段の釣行よりも長期間にわたって釣りを楽しむことができます。遠方の釣りスポットに足を運び、朝から晩までじっくりと釣りに没頭することができるのが特徴です。夜には釣った魚を使った料理を楽しんだり、メンバー同士の親睦を深めたりと、思い出に残るイベントが盛りだくさんです。
-                  </p>
+                  <p>{information["camp-text"]}</p>
                 </div>
-                <Image src={dummy1} alt="" class="slide1 sp-none" />
+                <img src={information["camp-image"].url} alt="合宿" class="slide1 sp-none" width={information["camp-image"].width} height={information["camp-image"].height} />
               </div>
             </div>
 
@@ -202,15 +182,13 @@ const response = await getInformation({ fields: ["location", "schedule","content
 
             <div class="p-Events__cardswrapper__card">
               <div class="p-Events__cardswrapper__card__flexbox">
-                <Image src={dummy1} alt="" class="slide1" />
+                <img src={information["fes-image"].url} alt="文化祭" class="slide1 sp-none" width={information["fes-image"].width} height={information["fes-image"].height} />
                 <div class="p-Events__cardswrapper__card__flexbox__txtbox">
                   <h3>文化祭</h3>
-
-                  <p>
-                    文化祭では、釣りの魅力を多くの人に伝えるための展示やイベントを企画しています。釣り道具の紹介、実際の釣果の写真展示、釣り体験コーナーなど、訪れた人が釣りに興味を持てるような工夫を凝らしています。また、釣った魚を使った料理の提供も行い、釣りの楽しさだけでなく、その魅力を食の面からも伝えています。
-
-                    竿友会は、釣りを通じて自然と向き合い、仲間とともに楽しい時間を共有する場です。釣り好きの方はもちろん、興味がある方もぜひ一緒に活動しましょう！
-                  </p>
+                  <div>
+                    <img src={information["fes-image"].url} alt="文化祭" class="slide1 pc-none" width={information["fes-image"].width} height={information["fes-image"].height} />
+                  </div>
+                  <p>{information["fes-text"]}</p>
                 </div>
               </div>
             </div>
@@ -218,7 +196,6 @@ const response = await getInformation({ fields: ["location", "schedule","content
         </div>
       </section>
 
-      <!-- <SlideShow2 images={slides} client:only="preact" /> -->
     </section>
   </main>
 </Layout>

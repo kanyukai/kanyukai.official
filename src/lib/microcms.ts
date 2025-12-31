@@ -200,22 +200,45 @@ export const getFormDetail = async (
 
 // information型定義
 export type Information= {
+  id:string;
   location:string;
   schedule:string;
   member:string;
   contents:string;
-  id:string;
+  slide: {
+    url: string;
+    width: number;
+    height: number;
+  }[];
+  "fishing-text": string;
+  "fishing-image": {
+    url: string;
+    width: number;
+    height: number;
+  };
+  "camp-text": string;
+  "camp-image": {
+    url: string;
+    width: number;
+    height: number;
+  };
+  "fes-text": string;
+  "fes-image": {
+    url: string;
+    width: number;
+    height: number;
+  };
 };
 export type InformationResponse = {
   totalCount: number;
   offset: number;
   limit: number;
-  contents: Form[];
+  contents: Information[];
 };
 
 //APIの呼び出し
 export const getInformation = async (queries?: MicroCMSQueries) => {
-  return await client3.get<FormResponse>({ endpoint: "information", queries });
+  return await client3.get<InformationResponse>({ endpoint: "information", queries });
 };
 export const getInformationDetail = async (
   contentId: string,
