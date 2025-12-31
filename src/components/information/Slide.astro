@@ -1,18 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import image1 from "../assets/image 1.png";
-import image2 from "../assets/sample.jpg";
-import LogoBig from "./LogoBig.astro";
-import LogoShort from "./LogoShort.astro";
-import {BigUnderline, PrevIcon, NextIcon} from "../utils/svgs.tsx";
+import image1 from "../../assets/image 1.png";
+import image2 from "../../assets/sample.jpg";
+import { PrevIcon, NextIcon } from "../../utils/svgs.tsx";
 
-const slides = [
-  image1,
-  image2,
-  image1,
-  image2,
-  image1,
-];
+interface Props {
+  images?: { url: string; width: number; height: number }[];
+}
+
+const { images } = Astro.props;
+
+// microCMSから画像が渡された場合はそれを使用、なければデフォルト画像
+const defaultSlides = [image1, image2, image1, image2, image1];
+const hasExternalImages = images && images.length > 0;
 
 ---
 <div class="top_content flex w-full ">
@@ -24,7 +24,7 @@ const slides = [
             <div class="w-[50px]  bg-gray-200 rounded-full h-[2px] dark:bg-gray-700">
               <div class="bg-black h-[2px] rounded-full" id="progress"></div>
             </div>
-            <span>{slides.length}</span>
+            <span>{hasExternalImages ? images.length : defaultSlides.length}</span>
             <span id="prev" class="prev">
               <PrevIcon/>
             </span>
@@ -33,13 +33,19 @@ const slides = [
             </span>
           </div>
           <div class="slide" id="slide">
-            {slides.map((slide, index) => {
-              return (
+            {hasExternalImages ? (
+              images.map((slide, index) => (
                 <div class={`list ${index}`}>
-                  <Image src={slide} alt={slide.src}/>
+                  <img src={slide.url} alt={`スライド${index + 1}`} style="width: 100%; height: 100%; object-fit: cover;" />
                 </div>
-              )
-            })}
+              ))
+            ) : (
+              defaultSlides.map((slide, index) => (
+                <div class={`list ${index}`}>
+                  <Image src={slide} alt={`スライド${index + 1}`} style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -47,26 +53,16 @@ const slides = [
   </div>
 
 <script>
-import image1 from "../assets/image 1.png";
-import image2 from "../assets/sample.jpg";
-
-const slides = [
-  image1,
-  image2,
-  image1,
-  image2,
-  image1,
-];const slide = document.getElementById('slide') as HTMLElement;
+const slide = document.getElementById('slide') as HTMLElement;
 const prev = document.getElementById('prev') as HTMLElement;
 const next = document.getElementById('next') as HTMLElement;
 const lists = document.querySelectorAll('.list') as NodeListOf<HTMLElement>;
-const totalSlides = slides.length;
+const totalSlides = lists.length;
 const progress = document.getElementById('progress') as HTMLElement;
 slide.style.width = `${totalSlides * 100}%`;
 lists.forEach(list => list.style.width = `${100 / totalSlides}%`);
 
 let count = 0;
-let autoPlayInterval: ReturnType<typeof setInterval> | undefined;
 let progressInterval: ReturnType<typeof setInterval>;
 let progressValue = 0;
 
@@ -88,7 +84,7 @@ function resetProgressBar() {
 }
 
 function startProgressBar() {
-  progressInterval = setInterval(updateProgressBar, 30); 
+  progressInterval = setInterval(updateProgressBar, 50);
 }
 
 function updateListBackground() {
@@ -99,39 +95,27 @@ function updateListBackground() {
 
 function nextClick() {
   slide.classList.remove(`slide${count % totalSlides + 1}`);
-  count == 2 ? count = 0 : count++;
+  count = (count + 1) % totalSlides;
   slide.classList.add(`slide${count % totalSlides + 1}`);
   updateListBackground();
 }
 
 function prevClick() {
   slide.classList.remove(`slide${count % totalSlides + 1}`);
-  count == 0 ? count = 2 : count--;
-  if (count < 0) count = totalSlides - 1;
+  count = (count - 1 + totalSlides) % totalSlides;
   slide.classList.add(`slide${count % totalSlides + 1}`);
   updateListBackground();
 }
 
-function startAutoPlay() {
-  autoPlayInterval = setInterval(nextClick, 3000);
-}
-
-function resetAutoPlayInterval() {
-  clearInterval(autoPlayInterval);
-  startAutoPlay();
-}
-
 next.addEventListener('click', () => {
   nextClick();
-  resetAutoPlayInterval();
   resetProgressBar();
 });
 prev.addEventListener('click', () => {
   prevClick();
-  resetAutoPlayInterval();
   resetProgressBar();
 });
 
-startAutoPlay();
 startProgressBar();
 
+</script>
