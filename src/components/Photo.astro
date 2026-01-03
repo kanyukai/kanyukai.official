@@ -4,8 +4,8 @@ import image1 from "../assets/1731855360710.jpg";
 import image2 from "../assets/1731855360851.jpg";
 import image3 from "../assets/1731855360895.jpg";
 import image4 from "../assets/1731855360934.jpg";
-import { getPhoto } from "../lib/microcms";
-const response = await getPhoto({ fields: ["id", "photo"] });
+// import { getPhoto } from "../lib/microcms";
+// const response = await getPhoto({ fields: ["id", "photo"] });
 
 // import { getImages } from "../lib/microcms";
 // const response4= await getImages({ fields: ["id","og_image"] });
@@ -26,17 +26,8 @@ const photos = [
 ---
 <section id="photo" class="p-photo">
     {photos.map((photo, index) => (
-        index % 2 == 0 ? (
-            <div class="p-photo__img__box even">
-                {response.contents.map((awards: any) => (
-                    <Image src={awards.photo.url} alt="Award Image"width={800} 
-                    height={600} />
-                ))}
-            </div>
-        ) : (
-            <div class="p-photo__img__box odd">
-                <Image src={photo} alt="Photo"/>
-            </div>
-        )
+        <div class={`p-photo__img__box ${index % 2 == 0 ? 'even' : 'odd'}`}>
+            <Image src={photo} alt="Photo"/>
+        </div>
     ))}
 </section>

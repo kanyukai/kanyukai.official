@@ -10,15 +10,15 @@ import { BigUnderline, MdLogo } from "../utils/svgs.tsx";
 import "../scss/top.scss";
 import SlideComponent from "./SlideShow.tsx";
 
-import { getForm, getFormDetail } from "../lib/microcms";
+import { getForm, getSlide } from "../lib/microcms";
 const response = await getForm({ fields: ["id","url"]});
 
+// microCMSからスライド画像を取得
+const slideResponse = await getSlide({ fields: ["id", "images"] });
+const slideImages = slideResponse.contents[0]?.images || [];
 
-const { formId } = Astro.params;
-const form = await getFormDetail(formId as string);
-
-const slides = [image1, image2, image3, image4, image5];
-console.log(response);
+// フォールバック用のローカル画像
+const defaultSlides = [image1, image2, image3, image4, image5];
 ---
 
 <section id="top" class="p-top flex w-full">
@@ -58,7 +58,8 @@ console.log(response);
         <LogoBig />
       </span>
       <SlideComponent
-        imgProps={slides}
+        imgProps={defaultSlides}
+        externalImages={slideImages}
         showIndicators={false}
         showProgressBar={true}
         client:only="preact"

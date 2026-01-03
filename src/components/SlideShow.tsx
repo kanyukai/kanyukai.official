@@ -5,9 +5,17 @@ import "../scss/top.scss";
 import "../scss/slide.scss";
 import type { RefObject } from "preact";
 
+// microCMS画像の型
+type MicroCMSImage = {
+  url: string;
+  width?: number;
+  height?: number;
+};
+
 //props
 interface Props {
-  imgProps: ImageMetadata[];
+  imgProps?: ImageMetadata[];
+  externalImages?: MicroCMSImage[];
   //●○のやつを表示するかどうかのフラグ,デフォルトでtrue
   showIndicators?: boolean;
   showNextPrevButton?: boolean;
@@ -16,11 +24,14 @@ interface Props {
 
 export default function SlideComponent({
   imgProps,
+  externalImages,
   showIndicators = true,
   showNextPrevButton = true,
   showProgressBar = false,
 }: Props) {
-  const slideLength = imgProps.length;
+  // microCMS画像があればそちらを優先、なければローカル画像を使用
+  const images = externalImages && externalImages.length > 0 ? externalImages : imgProps || [];
+  const slideLength = images.length;
   const [slidePos, changeSlidePos] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -125,7 +136,7 @@ export default function SlideComponent({
               ></span>
             </div>
             <h6 class="right">
-              {imgProps.length < 10 ? "0" + imgProps.length : imgProps.length}
+              {images.length < 10 ? "0" + images.length : images.length}
             </h6>
             <div
               style={{ display: `${showNextPrevButton ? "flex" : "none"}` }}
@@ -182,7 +193,7 @@ export default function SlideComponent({
           id="indicator"
           style={{ display: `${showIndicators ? "flex" : "none"}` }}
         >
-          {imgProps.map((_, index) => (
+          {images.map((_, index) => (
             <li
               class="list"
               style={{
@@ -200,17 +211,21 @@ export default function SlideComponent({
             transform: `translateX(-${(100 / slideLength) * (slidePos % slideLength)}%)`,
           }}
         >
-          {imgProps.map((img, index) => (
-            <div>
-              <img
-                src={img.src}
-                width={"100%"}
-                height={"auto"}
-                loading="eager"
-                alt={img.src}
-              />
-            </div>
-          ))}
+          {images.map((img, index) => {
+            // microCMS画像かローカル画像かを判定
+            const imgSrc = 'url' in img ? img.url : img.src;
+            return (
+              <div>
+                <img
+                  src={imgSrc}
+                  width={"100%"}
+                  height={"auto"}
+                  loading="eager"
+                  alt={`slide-${index + 1}`}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
