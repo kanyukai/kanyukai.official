@@ -8,13 +8,13 @@ import "@fontsource/zen-kaku-gothic-new";
 const description = "";
 const og_image = "";
 
-import Slide from "../../components/information/Slide.astro";
+import Slide from "../../components/common/Slide.astro";
 import Fishbg from "@/assets/images/fish_bg.webp";
-import Instagram from "@/assets/images/Instagram.webp";
-import X from "@/assets/images/X.webp";
-import { getInformation } from "../../lib/microcms";
-const response = await getInformation({ fields: ["location", "schedule","contents","member","id","slide","fishing-text","fishing-image","camp-text","camp-image","fes-text","fes-image"] });
+import { getInformation, getSlide } from "../../lib/microcms";
+const response = await getInformation({ fields: ["location", "schedule","contents","member","id","fishing-text","fishing-image","camp-text","camp-image","fes-text","fes-image"] });
 const information = response.contents[0]!;
+const slideResponse = await getSlide({ fields: ["id", "images"] });
+const slideImages = slideResponse.contents[0]?.images || [];
 
 ---
 
@@ -38,7 +38,7 @@ const information = response.contents[0]!;
       </svg>
     </a>
 
-    <section id="Info-top" class="p-Info-top sp-none">
+    <section id="Info-top" class="p-Info-top">
       <a class="to_top" href="#top">
         <svg
           width="60"
@@ -59,13 +59,13 @@ const information = response.contents[0]!;
 
       <h1 class="p-Info-top__ttl">Information</h1>
       <Image src={Fishbg} alt={""} class="p-activities__fish-bg" />
-      <div class="slidewrapper">
-        <Slide images={information.slide} />
+      <div class="slidewrapper sp-none">
+        <Slide images={slideImages} />
       </div>
 
       <div class="p-Status__flexbox pc-none">
         <div class="p-Status__titlewrapper pc-none">
-          <p>基本情報</p>
+          <p style="white-space: nowrap;">基本情報</p>
           <div class="p-Status__titlewrapper__flexbox">
             <h1 class="p-Status__titlewrapper__flexbox__title">About</h1>
           </div>
@@ -119,14 +119,6 @@ const information = response.contents[0]!;
                 {information.contents}
               </p>
             </div>
-            <div class="link-wrapper">
-              <a  class="link-txt pc-none" href="https://kanyukai.jimdofree.com/">旧ブログのリンクはこちらから</a>
-
-              <div class="icon-wrapper pc-none">
-                <Image src={Instagram} alt="" />
-                <Image src={X} alt="" />
-              </div>
-            </div>
           </div>
         ))
       } 
@@ -169,8 +161,8 @@ const information = response.contents[0]!;
               <div class="p-Events__cardswrapper__card__flexbox">
                 <div class="p-Events__cardswrapper__card__flexbox__txtbox">
                   <h3>合宿</h3>
-                  <div class="img-wrapper">
-                    <img src={information["camp-image"].url} alt="合宿" class="pc-none" width={information["camp-image"].width} height={information["camp-image"].height} />
+                  <div>
+                    <img src={information["camp-image"].url} alt="合宿" class="slide1 pc-none" width={information["camp-image"].width} height={information["camp-image"].height} />
                   </div>
                   <p>{information["camp-text"]}</p>
                 </div>

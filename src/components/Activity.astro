@@ -6,12 +6,10 @@ import SlideComponent from "./SlideShow";
 import "@/scss/styles.scss";
 import { Image } from "astro:assets";
 
-import { getActivities, getActivitiesDetail } from "../lib/microcms";
+import { getActivities } from "../lib/microcms";
 const response2 = await getActivities({
     fields: ["id", "title", "date", "content", "image"],
 });
-const { activitiesId } = Astro.params;
-const activities = await getActivitiesDetail(activitiesId as string);
 ---
 <ul>
     {response2.contents.map((activities: any) => (

@@ -29,11 +29,9 @@ const response = await getAwards({ fields: ["id", "title","date","contents"] });
 import { getActivities } from "../lib/microcms";
 const response2 = await getActivities({ fields: ["id", "title","date","description","image"] });
 import { getInvitation } from "../lib/microcms";
-const response3= await getInvitation({ fields: ["id", "title","date","contents","og_image"] });
-import { getHistory ,getHistoryDetail} from "../lib/microcms";
+const response3 = await getInvitation({ fields: ["id", "title", "date", "contents"] });
+import { getHistory } from "../lib/microcms";
 const response4 = await getHistory({ fields: ["id", "title","year","contents","ogimage"] });
-const { historyId } = Astro.params;
-const history = await getHistoryDetail(historyId as string);
 
 const periods: PeriodType[] = response4.contents.map((item: any) => ({
   year: item.year,
@@ -96,17 +94,13 @@ const periods: PeriodType[] = response4.contents.map((item: any) => ({
 			<ul>
 				{
 				  response3.contents.map((invitation: any) => (
-				  <Invitation title={invitation.title}  date={invitation.date}
+				  <Invitation title={invitation.title} date={invitation.date}
 				  content={invitation.contents} />
 				  ))
-				}      
+				}
 			</ul>
-
-			<!-- <Invitation title="代々木公園新歓BBQ開催！！！" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" date="YYYY/MM/DD"/>
-			<Invitation title="代々木公園新歓BBQ開催！！！" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" date="YYYY/MM/DD"/>
-			<Invitation title="代々木公園新歓BBQ開催！！！" content="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容・・・" date="YYYY/MM/DD"/> -->
 		</section>
-		<Photo/>
+		<!-- <Photo/> -->
 		<section class="calender-l-container">
 			<iframe class="justify-center flex items-center h-full" src="https://calendar.google.com/calendar/embed?src=gu.kanyukai.since1953%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
 		</section>

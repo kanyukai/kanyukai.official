@@ -173,6 +173,25 @@ header {
         li {
           margin: 3% 0;
         }
+        .header__social {
+          display: flex;
+          justify-content: center;
+          gap: 24px;
+          margin-top: 30px;
+          a {
+            display: flex;
+            align-items: center;
+            color: #000;
+            transition: opacity 0.3s ease;
+            &:hover {
+              opacity: 0.6;
+            }
+          }
+          svg {
+            width: 32px;
+            height: 32px;
+          }
+        }
       }
     }
 
@@ -204,6 +223,23 @@ header {
       opacity: 0.8;
       inset: 0;
       transition: all 0.3s ease;
+    }
+
+    .header__social-desktop {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-right: 1vw;
+      a {
+        display: flex;
+        align-items: center;
+        color: #000;
+        transition: opacity 0.3s ease;
+        &:hover {
+          opacity: 0.6;
+          border-bottom: none;
+        }
+      }
     }
 
     .header__invitation:hover {
@@ -351,12 +387,18 @@ header {
     width: inherit;
     height: inherit;
     padding: 1.25vw 2.083vw 2.083vw 1.25vw;
+    @media (max-width: $breakpoint-md) {
+      justify-content: space-between;
+      padding: 12px;
+    }
 
     &__left {
       width: 70%;
       margin-right: 5%;
       @media (max-width: $breakpoint-md) {
-        width: 50%;
+        width: auto;
+        flex: 1;
+        margin-right: 12px;
       }
       &__top {
         display: flex;
@@ -374,6 +416,9 @@ header {
           @media (max-width: $breakpoint-lg) {
             font-size: 1.125rem;
           }
+          @media (max-width: $breakpoint-md) {
+            font-size: 14px;
+          }
         }
 
         &__date {
@@ -386,11 +431,8 @@ header {
           @media (max-width: $breakpoint-lg) {
             font-size: 1rem;
           }
-        }
-        @media (max-width: $breakpointMobile) {
-          &__title,
-          &__date {
-            font-size: 2.93vw;
+          @media (max-width: $breakpoint-md) {
+            font-size: 11px;
           }
         }
       }
@@ -405,17 +447,13 @@ header {
           -webkit-box-orient: vertical;
         }
         @media (max-width: $breakpoint-md) {
-          height: 7.5em;
+          height: auto;
           line-height: 1.5em;
-          font-size: 1rem;
+          font-size: 12px;
           overflow: hidden;
           display: -webkit-box;
-          -webkit-line-clamp: 5; /* 表示する行数を指定 */
+          -webkit-line-clamp: 4; /* 表示する行数を指定 */
           -webkit-box-orient: vertical;
-        }
-
-        @media (max-width: $breakpointMobile) {
-          font-size: 2.67vw;
         }
       }
     }
@@ -427,6 +465,10 @@ header {
       position: relative;
       align-self: center;
 
+      img {
+        display: block;
+      }
+
       .indicator li {
         width: 1vw;
         height: 1vw;
@@ -436,7 +478,12 @@ header {
         min-height: 10px;
       }
       @media (max-width: $breakpoint-md) {
-        width: 50%;
+        width: auto;
+        flex-shrink: 0;
+        img {
+          width: 120px !important;
+          height: 100px !important;
+        }
       }
 
       .prev {
@@ -479,6 +526,9 @@ header {
   inset: -0.833vw 0.833vw 0.833vw -0.833vw;
   content: "";
   z-index: 2;
+  @media (max-width: $breakpoint-md) {
+    inset: -8px 8px 8px -8px;
+  }
 }
 
 // #article:hover {

@@ -15,11 +15,8 @@ const og_image = "";
 // const optimized_demo = await getImage({src: demo, format: 'webp'})
 // import { getAwards } from "../lib/microcms";
 // const response = await getAwards({ fields: ["id", "title","date","description"] });
-import { getAwards ,getAwardsDetail} from "../lib/microcms";
+import { getAwards } from "../lib/microcms";
 const response = await getAwards({ fields: ["id", "title","year","contents","ogimage","medalcolor","date"] });
-const { awardsId } = Astro.params;
-const awardscms = await getAwardsDetail(awardsId as string);
-console.log(awardscms);
 
 export interface Award {
   date: string;

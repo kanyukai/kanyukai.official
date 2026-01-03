@@ -205,11 +205,6 @@ export type Information= {
   schedule:string;
   member:string;
   contents:string;
-  slide: {
-    url: string;
-    width: number;
-    height: number;
-  }[];
   "fishing-text": string;
   "fishing-image": {
     url: string;
@@ -278,5 +273,26 @@ export const getPhotoDetail = async (
     contentId,
     queries,
   });
+};
+
+// Slide型定義
+export type Slide = {
+  id: string;
+  images: {
+    url: string;
+    width: number;
+    height: number;
+  }[];
+};
+export type SlideResponse = {
+  totalCount: number;
+  offset: number;
+  limit: number;
+  contents: Slide[];
+};
+
+//APIの呼び出し
+export const getSlide = async (queries?: MicroCMSQueries) => {
+  return await client3.get<SlideResponse>({ endpoint: "slide", queries });
 };
 
