@@ -27,6 +27,7 @@
     "microcms-js-sdk": "^3.1.2",
     "preact": "^10.24.3",
     "sass": "^1.83.1",
+    "sharp": "^0.33.5",
     "solid-js": "^1.9.3",
     "swiper": "^11.2.4",
     "tailwindcss": "^3.4.14",
