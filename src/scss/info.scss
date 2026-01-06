@@ -85,6 +85,17 @@ body {
   align-items: center;
 }
 
+.slidewrapper {
+  .slide-wrapper {
+    overflow: hidden;
+
+    .slide {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
 .p-activities__fish-bg {
   margin: 0 0 0 auto;
   width: 20vw;
