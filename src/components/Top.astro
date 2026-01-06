@@ -11,7 +11,8 @@ import "../scss/top.scss";
 import SlideComponent from "./SlideShow.tsx";
 
 import { getForm, getSlide } from "../lib/microcms";
-const response = await getForm({ fields: ["id","url"]});
+const response = await getForm({ fields: ["id", "url", "form_on"] });
+const formData = response.contents[0];
 
 // microCMSからスライド画像を取得
 const slideResponse = await getSlide({ fields: ["id", "images"] });
@@ -34,23 +35,21 @@ const defaultSlides = [image1, image2, image3, image4, image5];
     <h1 class="zenkaku_normal tracking-widest p-top__left__content__headline">
       Let's enjoy fishing with us!
     </h1>
-    {
-      response.contents.map((form: any) => (
-        <div class="p-top__left__content__join__link flex_all_center">
-          <div class="p-top__left__content__join__link__content relative">
-            <a class="p-top__left__content__join__link__content__link"
-              href={form.url}
-            >
-              Join us!
-            </a>
+    {formData?.form_on && (
+      <div class="p-top__left__content__join__link flex_all_center">
+        <div class="p-top__left__content__join__link__content relative">
+          <a class="p-top__left__content__join__link__content__link"
+            href={formData.url}
+          >
+            Join us!
+          </a>
 
-            <div class="p-top__left__content__join__link__content__svg">
-              <BigUnderline />
-            </div>
+          <div class="p-top__left__content__join__link__content__svg">
+            <BigUnderline />
           </div>
         </div>
-      ))
-    }
+      </div>
+    )}
   </div>
   <div class="p-top__right__content w-[60%]">
     <div class="p-top__right__content__img__wrapper relative">

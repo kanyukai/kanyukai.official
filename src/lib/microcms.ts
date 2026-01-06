@@ -172,9 +172,12 @@ export const getHistoryDetail = async (
 
 
 // form型定義
-export type Form= {
-  url:string;
-  id:string;
+export type Form = {
+  id: string;
+  url: string;
+  form_on: boolean;
+  instagram_link?: string;
+  x_link?: string;
 };
 export type FormResponse = {
   totalCount: number;
