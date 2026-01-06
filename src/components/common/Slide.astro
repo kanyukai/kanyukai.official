@@ -93,17 +93,19 @@ function updateListBackground() {
   }
 }
 
+function updateSlidePosition() {
+  slide.style.transform = `translateX(-${(100 / totalSlides) * count}%)`;
+}
+
 function nextClick() {
-  slide.classList.remove(`slide${count % totalSlides + 1}`);
   count = (count + 1) % totalSlides;
-  slide.classList.add(`slide${count % totalSlides + 1}`);
+  updateSlidePosition();
   updateListBackground();
 }
 
 function prevClick() {
-  slide.classList.remove(`slide${count % totalSlides + 1}`);
   count = (count - 1 + totalSlides) % totalSlides;
-  slide.classList.add(`slide${count % totalSlides + 1}`);
+  updateSlidePosition();
   updateListBackground();
 }
 
