@@ -1,5 +1,11 @@
 ---
 import { HeaderLogo, InstagramIcon, XIcon } from "../utils/svgs"
+import { getForm } from "../lib/microcms";
+
+const response = await getForm({ fields: ["id", "instagram_link", "x_link"] });
+const formData = response.contents[0];
+const instagramLink = formData?.instagram_link;
+const xLink = formData?.x_link;
 ---
 
 <header id="header">
@@ -31,14 +37,20 @@ import { HeaderLogo, InstagramIcon, XIcon } from "../utils/svgs"
             <li>
                 <a href="/kanyukai.official/History">歴史</a>
             </li>
+            {(instagramLink || xLink) && (
             <li class="header__social">
-                <a href="https://www.instagram.com/gu_kanyukai/" target="_blank" rel="noopener noreferrer">
+                {instagramLink && (
+                <a href={instagramLink} target="_blank" rel="noopener noreferrer">
                     <InstagramIcon />
                 </a>
-                <a href="https://x.com/gu_kanyukai" target="_blank" rel="noopener noreferrer">
+                )}
+                {xLink && (
+                <a href={xLink} target="_blank" rel="noopener noreferrer">
                     <XIcon />
                 </a>
+                )}
             </li>
+            )}
         </ul>
     </div>
     <ul class="header__link">
@@ -54,14 +66,20 @@ import { HeaderLogo, InstagramIcon, XIcon } from "../utils/svgs"
         <li>
             <a class="cursor-pointer" href="/kanyukai.official/History">歴史</a>
         </li>
+        {(instagramLink || xLink) && (
         <li class="header__social-desktop">
-            <a href="https://www.instagram.com/gu_kanyukai/" target="_blank" rel="noopener noreferrer">
+            {instagramLink && (
+            <a href={instagramLink} target="_blank" rel="noopener noreferrer">
                 <InstagramIcon />
             </a>
-            <a href="https://x.com/gu_kanyukai" target="_blank" rel="noopener noreferrer">
+            )}
+            {xLink && (
+            <a href={xLink} target="_blank" rel="noopener noreferrer">
                 <XIcon />
             </a>
+            )}
         </li>
+        )}
         <li class="header__invitation">
             <a class="helvetica_light">Join us!</a>
         </li>
